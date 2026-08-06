@@ -1,0 +1,119 @@
+generated: '2026-08-06'
+method: derived
+source: openapi/apriori-ap-connect-agent.yml
+docs:
+- https://docs.apriori.com/en/Connect/apc/rarg/overview/
+- https://www.apriori.com/security/
+summary: >-
+  What the aP Connect Agent REST API and aPriori as an organisation do and do not conform to. Organisational
+  security certifications are real and published; the API's own cross-cutting standards posture is thin —
+  it is a small on-premise control API with apiKey auth and no standards-based error, pagination or
+  idempotency layer.
+standards:
+- id: rest
+  conforms: true
+  evidence: >-
+    Resource-oriented paths over HTTP GET/POST with JSON payloads, as published in the aP Connect Agent REST
+    API Reference Guide. Uses only GET and POST — mutations are modelled as action sub-resources
+    (/{action}), not as PUT/PATCH/DELETE.
+- id: openapi
+  conforms: partial
+  evidence: >-
+    The Agent generates and serves its own machine-readable definition at
+    http://localhost:<port_number>/v4/api-docs (a springdoc-style endpoint), and aPriori publishes a
+    swagger2markup-style rendering of it at https://docs.apriori.com/en/Connect/apc/rarg/. The definition is
+    real but is NOT retrievable from any public host — only a customer running the Agent can fetch it. The
+    spec in openapi/ is API Evangelist's transcription of the published rendering, not a vendor artifact.
+- id: oauth2
+  conforms: false
+  evidence: >-
+    No OAuth 2.0 flow, authorization server or scope model is documented for the Agent API. The two
+    published schemes are both apiKey (Authorization header, `key` query parameter). aPriori Cloud user
+    login uses Auth0 with SAML federation, but that is application SSO, not API authorization.
+- id: oidc
+  conforms: false
+  evidence: >-
+    No /.well-known/openid-configuration is served on any aPriori host (probed; www.apriori.com 404,
+    docs.apriori.com soft-404). Auth0 is named on the security page as the SSO provider for the aPriori
+    Cloud application.
+- id: mutual-tls
+  conforms: true
+  evidence: >-
+    Certificate-based authentication (mTLS) between the Agent and aP Connect was introduced 2026-06-30,
+    configured on the Connector with an aPriori-signed certificate supplied during Agent install. Requires
+    Agent 5.2.0+. Not supported in unattended (-q) install mode.
+  source: https://docs.apriori.com/en/Connect/apc/rn/release-notes/
+- id: saml
+  conforms: true
+  evidence: >-
+    SAML integration with customer identity providers is published on the aPriori security page for aPriori
+    Cloud application sign-in.
+  scope: application SSO, not the API
+- id: rfc9457
+  conforms: false
+  evidence: >-
+    No problem+json. Every documented non-2xx response carries schema "No Content" — status codes only, no
+    error body. See errors/apriori-problem-types.yml.
+- id: rfc9116
+  conforms: false
+  evidence: >-
+    No /.well-known/security.txt on any host. www.apriori.com/.well-known/security.txt returns 404;
+    docs.apriori.com returns a soft-404 (HTTP 200 with the site home page).
+- id: rfc8594
+  conforms: false
+  evidence: No Sunset or Deprecation headers and no deprecation policy published. See lifecycle/apriori-lifecycle.yml.
+- id: idempotency
+  conforms: false
+  evidence: >-
+    No idempotency key mechanism. The shutdown nonce is a single-use confirmation handshake for one
+    operation, not general request idempotency. See conventions/apriori-conventions.yml.
+- id: pagination
+  conforms: false
+  evidence: >-
+    Collection endpoints (GET /api/workflows, GET .../jobs) publish no page, cursor, limit or offset
+    parameter.
+- id: json-api
+  conforms: false
+  evidence: Plain JSON objects and arrays; no JSON:API envelope, no `data`/`included` structure.
+- id: asyncapi
+  conforms: false
+  evidence: >-
+    No event, streaming or webhook surface is published. Workflow completion is signalled by polling and by
+    configurable email notification, not by callbacks. N/A rather than a failure.
+- id: iso-27001
+  conforms: true
+  scope: organisation
+  evidence: ISO/IEC 27001 certification seal published on https://www.apriori.com/security/ and via the Vanta trust center at https://trust.apriori.com/
+- id: soc2
+  conforms: true
+  scope: organisation
+  evidence: AICPA SOC 2 badge published on https://www.apriori.com/security/; report access via the Vanta trust center.
+- id: gdpr
+  conforms: claimed
+  scope: organisation
+  evidence: GDPR badge published on https://www.apriori.com/security/; privacy policy at https://www.apriori.com/privacy-policy/
+sector_standards:
+- id: plm-integration
+  systems: [PTC Windchill, Siemens Teamcenter, file system]
+  evidence: >-
+    ServiceConfiguration.plmType enumerates FILE_SYSTEM, MOCK, TEAMCENTER, WINDCHILL. Supported-version and
+    out-of-box field pages are published per PLM at
+    https://docs.apriori.com/en/Connect/apc/sag/supported-versions-and-oob-plm-fields/
+  note: >-
+    These are vendor integrations, not an industry standard — aPriori does not claim conformance to STEP,
+    QIF, PLM Services or any other manufacturing interchange standard in its public API documentation.
+x-evidence:
+  fetched: '2026-08-06'
+  sources:
+  - url: https://docs.apriori.com/en/Connect/apc/rarg/Security/
+    http_status: 200
+  - url: https://docs.apriori.com/en/Connect/apc/rarg/Definitions/
+    http_status: 200
+  - url: https://www.apriori.com/security/
+    http_status: 200
+  - url: https://trust.apriori.com/
+    http_status: 200
+  - url: https://www.apriori.com/.well-known/security.txt
+    http_status: 404
+  - url: https://www.apriori.com/.well-known/openid-configuration
+    http_status: 404

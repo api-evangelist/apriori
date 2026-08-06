@@ -1,0 +1,137 @@
+generated: '2026-08-06'
+method: derived
+source: openapi/apriori-ap-connect-agent.yml
+docs: https://docs.apriori.com/en/Connect/apc/rarg/overview/
+api: aP Connect Agent REST API
+summary: >-
+  Cross-cutting runtime semantics for the aP Connect Agent REST API, derived from aPriori's published REST
+  API Reference Guide. This is a small, action-oriented, on-premise control API — it does NOT publish the
+  usual SaaS conventions layer, and the honest answer to most rows below is "not published". Recorded so a
+  consumer knows what it can and cannot rely on.
+auth:
+  style: apiKey, two alternatives, either accepted
+  schemes:
+  - name: JWT Bearer
+    transport: header
+    parameter: Authorization
+  - name: Shared Secret
+    transport: query
+    parameter: key
+    caution: >-
+      A secret carried in the query string is logged by proxies, reverse proxies and access logs. Prefer the
+      JWT Bearer header where the deployment allows it.
+  transport_security:
+    mtls:
+      supported: true
+      since: '2026-06-30'
+      scope: Configured on the Connector, with an aPriori-signed certificate supplied during Agent install.
+      requires: Agent 5.2.0 or later
+      source: https://docs.apriori.com/en/Connect/apc/rn/release-notes/
+    ip_allowlisting:
+      note: >-
+        Before mTLS, aPriori required allowlisting the Agent host's IP address; the 2026-06-30 release
+        notes describe mTLS as the replacement for that requirement.
+  see_also: authentication/apriori-authentication.yml
+idempotency:
+  supported: false
+  published: false
+  detail: >-
+    No idempotency key, request key, or replay-safety mechanism is documented anywhere in the aP Connect
+    Agent REST API Reference Guide. The write operations are action-shaped
+    (POST /api/workflows/{workflowIdentity}/{action}, POST .../jobs/{jobIdentity}/{action},
+    POST /api/shutdown) and carry no client-supplied dedupe token. Retrying a `run` or `runPartList` after a
+    timeout can start a second costing job; consumers must dedupe on their own side using the returned
+    jobId. The ONE replay control aPriori does publish is the shutdown nonce — POST /api/shutdown mints a
+    single-use shutdownCode that must be presented back to initiate shutdown — which is a confirmation
+    handshake, not general request idempotency.
+  no_pointer_note: >-
+    Because there is no idempotency support, no `type: Idempotency` pointer is emitted in apis.yml. Emitting
+    one would be fabrication.
+pagination:
+  supported: false
+  published: false
+  detail: >-
+    GET /api/workflows and GET /api/workflows/{workflowIdentity}/jobs are documented as unbounded
+    collections with no page, cursor, limit or offset parameter. The only volume control published anywhere
+    is `maxPartsToReturn` on the ServiceConfiguration object, which is an Agent-side configuration value
+    (GET /api/configuration), not a request parameter.
+field_expansion:
+  supported: false
+  detail: No expand, fields or sparse-fieldset parameter is documented.
+metadata:
+  supported: true
+  mechanism: User Defined Attributes (UDAs)
+  detail: >-
+    Customer-defined attributes configured on a workflow flow through the API in both directions — they may
+    be supplied inside `costingInputs` on a runPartList request, and since Agent 4.0.0 (2024-07-22) they are
+    returned in the response body of both GET results endpoints. UDAs are open-ended keys, so the results
+    payloads carry additional properties beyond the documented CostingResult / PartCostingResult fields.
+  source: https://docs.apriori.com/en/Connect/apc/rn/release-notes/
+request_tracing:
+  request_id_header: none published
+  correlation: >-
+    The workflow-action response returns a `jobId` (WorkflowActionResult), which is the identifier a
+    consumer polls on and the only correlation handle aPriori publishes.
+versioning:
+  api_version: 4.0.2
+  in_url: false
+  detail: >-
+    Paths are unversioned (/api/...). The version travels with the Agent build: the Agent's own generated
+    spec is served at /v4/api-docs, so the major version is expressed in the spec path rather than in the
+    resource paths. Consumers pin by Agent version, not by URL.
+  spec_endpoint: http://localhost:{port_number}/v4/api-docs
+  see_also: lifecycle/apriori-lifecycle.yml
+content_negotiation:
+  produces: application/json;charset=UTF-8
+  consumes:
+  - application/json
+  - application/json;charset=UTF-8
+  detail: >-
+    415 Unsupported Media Type is a documented response on EVERY operation, including the GETs, so the
+    Content-Type header matters even where no body is sent.
+error_envelope:
+  format: none published
+  rfc9457: false
+  detail: >-
+    Every non-2xx response in the reference guide is documented with schema "No Content" — aPriori publishes
+    status codes and their meanings, but no error body shape, no error code vocabulary and no
+    application/problem+json. Consumers must branch on the HTTP status alone. The one semantically rich
+    status is 409 on the two results endpoints ("Conflict when job is not in terminal state"), which is the
+    documented signal to keep polling.
+  see_also: errors/apriori-problem-types.yml
+rate_limiting:
+  published: false
+  detail: >-
+    No rate-limit headers, quotas or throttling behavior are documented. The Agent is single-tenant and
+    customer-hosted, so throughput is bounded by the customer's own deployment; `scanRate`,
+    `reconnectionInterval` and `maxPartsToReturn` in ServiceConfiguration are the closest published knobs.
+async_semantics:
+  pattern: fire-and-poll
+  detail: >-
+    Costing is asynchronous. POST /api/workflows/{workflowIdentity}/{action} returns a WorkflowActionResult
+    with a jobId and startedAt; the caller then polls
+    GET /api/workflows/{workflowIdentity}/jobs/{jobIdentity} until the job reaches a terminal state, and
+    only then can fetch results — the results endpoints answer 409 while the job is non-terminal. Cancel via
+    POST /api/workflows/{workflowIdentity}/jobs/{jobIdentity}/cancel. There is no webhook or callback; the
+    only push channel aPriori publishes is workflow email notification, configured in the aP Connect UI.
+  no_webhooks_note: >-
+    No webhook catalog and no AsyncAPI, so no `type: Webhooks` or `type: AsyncAPI` pointer is emitted.
+cross_links:
+  authentication: authentication/apriori-authentication.yml
+  errors: errors/apriori-problem-types.yml
+  lifecycle: lifecycle/apriori-lifecycle.yml
+  changelog: changelog/apriori-changelog.yml
+  data_model: data-model/apriori-data-model.yml
+x-evidence:
+  fetched: '2026-08-06'
+  sources:
+  - url: https://docs.apriori.com/en/Connect/apc/rarg/overview/
+    http_status: 200
+  - url: https://docs.apriori.com/en/Connect/apc/rarg/Paths/
+    http_status: 200
+  - url: https://docs.apriori.com/en/Connect/apc/rarg/Security/
+    http_status: 200
+  - url: https://docs.apriori.com/en/Connect/apc/sag/REST-API-Management-Responsibilities/
+    http_status: 200
+  - url: https://docs.apriori.com/en/Connect/apc/rn/release-notes/
+    http_status: 200

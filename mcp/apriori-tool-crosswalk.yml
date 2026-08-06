@@ -1,0 +1,106 @@
+generated: '2026-08-06'
+method: derived
+source: >-
+  Derived by binding the candidate MCP tool list in mcp/apriori-mcp.yml to the operations in
+  openapi/apriori-ap-connect-agent.yml (12 operations, transcribed from aPriori's published aP Connect
+  Agent REST API Reference Guide).
+purpose: >-
+  Make the tool the first-class unit and bind it to the REST operation that backs it, so a tool's real
+  inputSchema is the operation's parameters + requestBody rather than a guess. For aPriori this is a
+  one-to-one mapping: there is no MCP server and no GraphQL surface, so every tool is REST-backed and no
+  surface is a superset of another.
+caveat: >-
+  aPriori ships NO MCP server. The tool side of this crosswalk is API Evangelist's candidate derivation
+  (mcp/apriori-mcp.yml, status: candidate). The REST side is real. Read this as "what a tool layer over this
+  API would bind to", not as a description of a vendor product.
+surfaces:
+  rest_openapi: openapi/apriori-ap-connect-agent.yml
+  rest_openapi_status: >-
+    Transcribed from aPriori's published reference guide. The vendor's own machine-readable spec is served
+    by the Agent at http://localhost:<port_number>/v4/api-docs — gated behind a customer deployment, not
+    fetchable from any public host.
+  graphql: null
+  mcp: null
+  mcp_status: does not exist
+crosswalk:
+- tool: get_service_configuration
+  category: agent
+  rest: [getServiceConfiguration]
+  binding: rest
+  confidence: high
+- tool: get_service_status
+  category: agent
+  rest: [getServiceStatus]
+  binding: rest
+  confidence: high
+- tool: create_shutdown_nonce
+  category: agent
+  rest: [createShutdownNonce]
+  binding: rest
+  confidence: high
+- tool: initiate_shutdown
+  category: agent
+  rest: [initiateShutdown]
+  binding: rest
+  confidence: medium
+  note: >-
+    The backing operation's path carries an inferred {nonce} segment — aPriori's reference page renders the
+    request line as POST /api/shutdown while documenting nonce as a required PATH parameter. Confidence is
+    medium for that reason, not because the operation is uncertain.
+- tool: list_workflows
+  category: workflow
+  rest: [listWorkflows]
+  binding: rest
+  confidence: high
+- tool: get_workflow
+  category: workflow
+  rest: [getWorkflow]
+  binding: rest
+  confidence: high
+- tool: run_workflow
+  category: workflow
+  rest: [runWorkflowAction]
+  binding: rest
+  confidence: high
+  note: >-
+    One operation, two behaviours selected by the {action} path parameter — run and runPartList. A tool
+    layer would most usefully split these into two tools with different inputSchemas, since only runPartList
+    takes a body.
+- tool: list_workflow_jobs
+  category: workflow
+  rest: [listWorkflowJobs]
+  binding: rest
+  confidence: high
+- tool: get_workflow_job
+  category: workflow
+  rest: [getWorkflowJob]
+  binding: rest
+  confidence: high
+- tool: cancel_workflow_job
+  category: workflow
+  rest: [runWorkflowJobAction]
+  binding: rest
+  confidence: high
+  note: 'Published action vocabulary is [cancel] only.'
+- tool: get_job_results
+  category: results
+  rest: [getJobResults]
+  binding: rest
+  confidence: high
+- tool: get_part_results
+  category: results
+  rest: [getPartResults]
+  binding: rest
+  confidence: high
+mcp_only: []
+rest_only: []
+coverage:
+  rest_operations: 12
+  tools: 12
+  bound: 12
+  mcp_only: 0
+  rest_only: 0
+  bound_pct: 100
+  note: >-
+    100% because the tool list was derived FROM the operations. This is a completeness statement about the
+    derivation, not evidence of a vendor tool surface.

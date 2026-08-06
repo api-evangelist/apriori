@@ -1,0 +1,126 @@
+generated: '2026-08-06'
+method: searched
+source: https://docs.apriori.com/en/Connect/apc/rn/release-notes/
+name: aP Connect Release Notes
+scheme:
+  style: dated-entries
+  format: 'Month DD, YYYY headings, each carrying New Features / Enhancements / Resolved Issues sections'
+  versioning: >-
+    Entries name the component and its semantic version — "aP Connect App x.y.z" for the cloud app and
+    "aP Connect Agent x.y.z" for the customer-installed Agent. The two version lines move independently.
+  machine_readable: false
+  feed: none published
+components_versioned:
+- name: aP Connect App
+  latest_named_in_changelog: 4.1.0
+  latest_named_date: '2025-01-30'
+- name: aP Connect Agent
+  latest_named_in_changelog: 5.3.0
+  latest_named_date: '2026-06-30'
+  note: >-
+    5.3.0 is named as a REQUIREMENT of the 2026-06-30 entry rather than as the release being announced;
+    5.2.0 is the most recent Agent release with its own entry (2026-05-12).
+- name: aP Connect Agent REST API
+  version: 4.0.2
+  source: https://docs.apriori.com/en/Connect/apc/rarg/overview/
+entries:
+- date: '2026-06-30'
+  type: [enhancement, feature]
+  breaking: false
+  highlights:
+  - >-
+    DFM Connector Mappings Enhancement — new Costing Outputs mapping fields (Max Severity, Critical Issues,
+    Major Issues, Minor Issues, Cost Drivers, Unclassified Issues). Requires Agent 5.3.0 or later.
+  - >-
+    The new DFM fields can be included in Workflow Notifications using the Configurable Summary email
+    template; the Part Design Guidance [SSR] report is now attachable to Workflow Notifications.
+  - >-
+    New feature — Agent certificate-based authentication (mTLS), removing the need to allowlist the Agent
+    host's IP address. Enabled on the Connector, with an aPriori-signed certificate supplied at Agent
+    install. Requires Agent 5.2.0 or later. Supported in Setup Wizard and console (-c) install modes; NOT
+    supported in unattended (-q) mode.
+- date: '2026-05-12'
+  type: [enhancement]
+  breaking: false
+  highlights:
+  - >-
+    Agent 5.2.0 introduces foundational support for the upcoming certificate-based authentication (mTLS)
+    functionality; Connector configuration and certificate management shipped in a later release.
+- date: '2026-04-28'
+  type: [feature, security-notice]
+  breaking: false
+  highlights:
+  - >-
+    Observe log forwarding for the CIC Agent, with optional inclusion of custom MiddleCode logs, for
+    centralized log forwarding.
+  - 'Information: Windchill Tomcat security patch notice.'
+- date: '2025-01-30'
+  type: [feature]
+  breaking: false
+  version: aP Connect App 4.1.0
+  highlights:
+  - >-
+    Upgraded Windchill REST API support — querying with Equals / Does not Equal on Enumerated Value Lists
+    and reading those list values, in addition to legacy Legal Value List support. Limitations — Contains
+    and Begins With are not supported, and only reading (not write-back) of these list values is supported.
+- date: '2024-10-23'
+  type: [feature]
+  breaking: false
+  version: aP Connect App 3.10.0
+  highlights:
+  - >-
+    Part Carbon Report — a sustainability-only report selectable in workflows alongside Part Cost, DTC Part
+    Summary and DFM Multiple Components Summary, attachable to notification email and writable back to PLM.
+    Requires an active Sustainability License; without one the workflow completes but the report is not
+    generated.
+- date: '2024-07-22'
+  type: [feature, api]
+  breaking: false
+  version: aP Connect Agent 4.0.0
+  highlights:
+  - >-
+    aP Connect Agent REST API enhanced so the GET results endpoints include all User Defined Attributes
+    (UDAs) defined in the customer's setup — GET /api/workflows/{workflowIdentity}/jobs/{jobIdentity}/results
+    and GET /api/workflows/{workflowIdentity}/jobs/{jobIdentity}/parts/{plmPartIdentity}/results. Additive;
+    existing fields unchanged.
+  also: [Resolved Issues]
+- date: '2024-05-01'
+  type: [fix]
+  breaking: false
+  version: aP Connect App 3.7.0
+  highlights:
+  - Jobs no longer stall on an aP Admin export failure; the job bypasses the export step and completes the rest of the workflow.
+  - Assembly failures now surface the originating part's error message instead of a generic one.
+  - A Connector mapped to a nonexistent PLM attribute no longer leaves jobs in a non-terminal state and the workflow permanently locked.
+- date: '2024-04-10'
+  type: [fix]
+  breaking: false
+  highlights:
+  - Notification summary copyright year corrected.
+  - Long Part Numbers and Scenario Names now wrap in the table instead of truncating.
+- date: '2024-03-27'
+  type: [fix]
+  breaking: false
+  version: aP Connect App 3.6.0
+  highlights:
+  - Machining Mode now shows the option the scenario was analyzed with, not the specified input.
+  - Failed scenarios now show the material name used rather than "invalid".
+  - Production fields no longer missing for assemblies on PLM write.
+- date: '2024-03-04'
+  type: [feature]
+  breaking: false
+  highlights:
+  - New features entry (see the published release notes for detail).
+related:
+- name: aP Connect Agent release notes
+  url: https://docs.apriori.com/en/Connect/apc/agt-rn/3-4-0/23-1-0-0-agent-3-4-0/
+- name: aP Pro release notes
+  url: https://docs.apriori.com/en/Pro/current/app/rn/release-notes.htm
+- name: aP Design release notes
+  url: https://docs.apriori.com/en/Design/apd/rn/release-notes.htm
+- name: aP Workspace release notes
+  url: https://docs.apriori.com/en/Workspace/apw/rn/1-0-1/issues-resolved/
+x-evidence:
+  fetched: '2026-08-06'
+  url: https://docs.apriori.com/en/Connect/apc/rn/release-notes/
+  http_status: 200

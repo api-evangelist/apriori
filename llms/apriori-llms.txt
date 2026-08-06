@@ -1,0 +1,101 @@
+# aPriori
+
+> aPriori Technologies (founded 2003) makes manufacturing insights software that simulates how a product
+> will actually be made. It ingests CAD geometry and returns should-cost estimates, design-for-
+> manufacturability (DFM) guidance, routing and cycle-time analysis, and manufacturing carbon figures.
+> Its public API surface is the aP Connect Agent REST API — a customer-installed integration Agent that
+> wires aPriori into PTC Windchill, Siemens Teamcenter, or a file system.
+
+generated: 2026-08-06
+method: generated
+source: apis.yml + repo artifacts (aPriori publishes no llms.txt on any host)
+
+## What is and is not public
+
+aPriori does not run a developer portal, does not offer self-serve signup, and does not host a public API.
+The one documented programmable surface is the **aP Connect Agent REST API**, version 4.0.2. The Agent runs
+inside the customer's own network; aPriori documents its base URL as `localhost:<port_number>/`. The Agent
+generates and serves its own machine-readable definition at `http://localhost:<port_number>/v4/api-docs`,
+which only a customer running the Agent can reach — there is no public spec URL.
+
+The human-readable reference IS public, at https://docs.apriori.com/en/Connect/apc/rarg/ .
+`openapi/apriori-ap-connect-agent.yml` in this repo is API Evangelist's transcription of that reference.
+
+## aP Connect Agent REST API
+
+- Reference: https://docs.apriori.com/en/Connect/apc/rarg/overview/
+- Admin guide: https://docs.apriori.com/en/Connect/apc/sag/REST-API-Management-Responsibilities/
+- Install guide: https://docs.apriori.com/en/Connect/apc/ig/Agent-Installation-Overview/
+- Spec (this repo): openapi/apriori-ap-connect-agent.yml
+- Version: 4.0.2 | 12 operations | GET and POST only | JSON
+
+### Authentication
+Two published apiKey schemes, either accepted:
+- `Authorization` header — "JWT Bearer"
+- `key` query parameter — "Shared Secret" (avoid; query-string secrets are logged)
+Connector-level mTLS was added 2026-06-30 (requires Agent 5.2.0+) and replaces IP allowlisting of the
+Agent host. No OAuth 2.0, no OpenID Connect, no scopes.
+
+### Operations
+Agent
+- `GET /api/configuration` — getServiceConfiguration — PLM type, host URLs, scan rate, max parts to return
+- `GET /api/status` — getServiceStatus — service / aP Connect / PLM connection status, in-flight job count
+- `POST /api/shutdown` — createShutdownNonce — mint a single-use shutdownCode
+- `POST /api/shutdown/{nonce}` — initiateShutdown — mode `completeAndTerminate` (path segment inferred; see the spec)
+
+Workflow
+- `GET /api/workflows` — listWorkflows
+- `GET /api/workflows/{workflowIdentity}` — getWorkflow
+- `POST /api/workflows/{workflowIdentity}/{action}` — runWorkflowAction — actions `run`, `runPartList`
+- `GET /api/workflows/{workflowIdentity}/jobs` — listWorkflowJobs
+- `GET /api/workflows/{workflowIdentity}/jobs/{jobIdentity}` — getWorkflowJob
+- `POST /api/workflows/{workflowIdentity}/jobs/{jobIdentity}/{action}` — runWorkflowJobAction — action `cancel`
+- `GET /api/workflows/{workflowIdentity}/jobs/{jobIdentity}/results` — getJobResults
+- `GET /api/workflows/{workflowIdentity}/jobs/{jobIdentity}/parts/{plmPartIdentity}/results` — getPartResults
+
+### Runtime rules an agent must know
+- Costing is fire-and-poll: invoke, capture `jobId`, poll the job, then read results.
+- `409 Conflict when job is not in terminal state` on a results endpoint means "keep polling", not "failed".
+- `runPartList` requires a `costingInputs` object on every part, even when empty.
+- No idempotency key. Retrying an invocation can start a second costing job.
+- No pagination on any collection endpoint.
+- No error body on any status — every non-2xx is documented as "No Content". Branch on the status code.
+- Per-part failures arrive inside a 200 as `errorMessage` / `cicStatus`, not as HTTP errors.
+- `415` is documented on every operation including GETs — always send `Content-Type: application/json`.
+- Results payloads carry the customer's User Defined Attributes; treat them as open objects.
+- No webhooks, no events, no AsyncAPI. Push notification is email, configured in the aP Connect UI.
+
+## Artifacts in this repo
+- openapi/apriori-ap-connect-agent.yml — OpenAPI 3.0.3, derived from the published reference
+- overlays/apriori-ap-connect-agent-overlay.yaml — Overlay 1.0.0 with the async, error and UDA semantics
+- authentication/apriori-authentication.yml — the two apiKey schemes
+- conventions/apriori-conventions.yml — auth, async, pagination, versioning, error envelope, rate limits
+- errors/apriori-problem-types.yml — the full status catalogue and the in-band error fields
+- data-model/apriori-data-model.yml — Agent → Workflow → Job → Part entity graph
+- lifecycle/apriori-lifecycle.yml — versioning, deprecation, SLA, status page (all absent, with evidence)
+- changelog/apriori-changelog.yml — dated aP Connect release notes, 2024-03 through 2026-06
+- conformance/apriori-conformance.yml — standards posture, incl. ISO 27001 / SOC 2 / GDPR
+- security/apriori-trust-center.yml — Vanta trust center and published certifications
+- security/apriori-domain-security.yml — TLS / HSTS / DNSSEC / CAA / SPF / DMARC probe results
+- well-known/apriori-well-known.yml — every /.well-known/ path probed, all misses, soft-404 recorded
+- mcp/apriori-mcp.yml — CANDIDATE tool derivation; aPriori ships no MCP server
+- mcp/apriori-tool-crosswalk.yml — tool → operationId binding
+- skills/ — three packaged Agent Skills grounded in real operationIds
+
+## Company
+- Website: https://www.apriori.com/
+- Documentation: https://docs.apriori.com/
+- Support: https://support.apriori.com/hc/en-us
+- Blog: https://www.apriori.com/blog/
+- Pricing: https://www.apriori.com/pricing/
+- Login (aPriori Cloud): https://cloud.apriori.net/
+- Security & compliance: https://www.apriori.com/security/ | https://trust.apriori.com/
+- Training: https://aprioriacademy.learnupon.com/catalog
+- Products: aP Pro, aP Design, aP Generate, aP Analytics, aP Workspace, aP Connect, aiSource
+
+## Not published
+No status page (status.apriori.com does not resolve; apriori.statuspage.io belongs to an unrelated
+crypto project of the same name). No security.txt, no vulnerability disclosure policy, no bug bounty.
+No public GitHub organisation. No SDKs or client libraries in npm, PyPI, Maven Central or elsewhere.
+No CLI, no sandbox, no test credentials, no embeddable components, no Postman collection, no MCP server,
+no A2A agent card, no deprecation policy, no SLA.

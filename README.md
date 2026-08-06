@@ -42,5 +42,18 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-aPriori is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://forgeglobal.com/apriori_stock/
+aPriori Technologies is a manufacturing insights software company founded in 2003. Its platform ingests CAD
+geometry and returns should-cost estimates, design-for-manufacturability (DFM) guidance, routing and
+cycle-time analysis, and manufacturing carbon figures. The public integration surface is **aP Connect** — a
+PLM/file-system connector plus a customer-installed Agent carrying a documented REST API (v4.0.2, 12
+operations) for listing workflows, invoking REST-driven costing jobs, polling job state, and retrieving
+per-part costing results.
+
+Note: the aP Connect Agent is customer-hosted. aPriori documents its base URL as `localhost:<port_number>/`,
+and the Agent serves its own machine-readable spec at `/v4/api-docs` — reachable only from inside a
+customer's deployment. The OpenAPI in `openapi/` is API Evangelist's transcription of aPriori's own
+published REST API Reference Guide.
+
+- https://www.apriori.com/
+- https://docs.apriori.com/
+- https://docs.apriori.com/en/Connect/apc/rarg/overview/

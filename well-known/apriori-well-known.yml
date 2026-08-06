@@ -1,0 +1,111 @@
+generated: '2026-08-06'
+method: probed
+source: live HTTP probes of every aPriori host in apis.yml
+summary:
+  hosts_probed: 2
+  hits: 0
+  note: >-
+    aPriori publishes no /.well-known/ documents on any host reachable without credentials.
+soft_404_warning: >-
+  docs.apriori.com answers HTTP 200 with the 195,886-byte WordPress home page for EVERY unmatched path,
+  including every /.well-known/* path, /llms.txt, /openapi.json and /swagger.json. A 200 from that host is
+  NOT evidence of a document. Every 200 below was diffed against the control body
+  (https://docs.apriori.com/ , 195886 bytes) and matched it byte-for-byte, so all are recorded as misses.
+hosts:
+- host: www.apriori.com
+  behavior: honest 404 (WordPress 404 template, 181,867 bytes)
+  paths:
+  - path: /.well-known/security.txt
+    status: 404
+    hit: false
+  - path: /.well-known/openid-configuration
+    status: 404
+    hit: false
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    hit: false
+  - path: /.well-known/api-catalog
+    status: 404
+    hit: false
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    hit: false
+  - path: /.well-known/agent-card.json
+    status: 404
+    hit: false
+  - path: /.well-known/agent.json
+    status: 404
+    hit: false
+  - path: /llms.txt
+    status: 404
+    hit: false
+  - path: /openapi.json
+    status: 404
+    hit: false
+  - path: /swagger.json
+    status: 404
+    hit: false
+  - path: /robots.txt
+    status: 200
+    hit: true
+    file: null
+    note: 'Yoast-generated; "User-agent: * / Disallow:" plus sitemap https://www.apriori.com/sitemap_index.xml. Not a well-known document; recorded for completeness.'
+- host: docs.apriori.com
+  behavior: soft-404 (returns the site home page with HTTP 200 for any unmatched path)
+  paths:
+  - path: /.well-known/security.txt
+    status: 200
+    hit: false
+    reason: soft-404, body identical to control
+  - path: /.well-known/openid-configuration
+    status: 200
+    hit: false
+    reason: soft-404, body identical to control
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    hit: false
+    reason: soft-404, body identical to control
+  - path: /.well-known/api-catalog
+    status: 200
+    hit: false
+    reason: soft-404, body identical to control
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    hit: false
+    reason: soft-404, body identical to control
+  - path: /.well-known/agent-card.json
+    status: 200
+    hit: false
+    reason: soft-404, body identical to control
+  - path: /.well-known/agent.json
+    status: 200
+    hit: false
+    reason: soft-404, body identical to control
+  - path: /llms.txt
+    status: 200
+    hit: false
+    reason: soft-404, body identical to control
+  - path: /openapi.json
+    status: 200
+    hit: false
+    reason: soft-404, body identical to control
+  - path: /swagger.json
+    status: 200
+    hit: false
+    reason: soft-404, body identical to control
+other_hosts_checked:
+- host: developer.apriori.com
+  resolves: false
+  note: DNS does not resolve (curl exit, http_code 000).
+- host: api.apriori.com
+  resolves: false
+  note: DNS does not resolve (curl exit, http_code 000).
+- host: status.apriori.com
+  resolves: false
+  note: DNS does not resolve (curl exit, http_code 000).
+- host: apriori.statuspage.io
+  status: 200
+  note: >-
+    NOT aPriori Technologies. The page is titled "aPriori Status" but its components are "Staking" and
+    "Withdrawal" — it belongs to an unrelated crypto/liquid-staking project of the same name. Deliberately
+    NOT wired as a StatusPage.

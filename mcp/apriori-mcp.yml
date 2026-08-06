@@ -1,0 +1,62 @@
+generated: '2026-08-06'
+method: derived
+status: candidate
+source: openapi/apriori-ap-connect-agent.yml
+searched:
+  result: none
+  detail: >-
+    No official aPriori MCP server exists. Searched aPriori's own documentation, the aP Connect docs tree,
+    the company website and the public registries; probed every aPriori host for /.well-known/ai-plugin.json,
+    /.well-known/agent-card.json and /llms.txt (all misses — see well-known/apriori-well-known.yml). aPriori
+    has no public GitHub organisation: the "Edit this page" links on docs.apriori.com point at
+    github.com/aPrioriDocumentation, which returns 404 to the GitHub API (private or renamed).
+  probes:
+  - url: https://www.apriori.com/.well-known/ai-plugin.json
+    http_status: 404
+  - url: https://docs.apriori.com/.well-known/ai-plugin.json
+    http_status: 200
+    note: soft-404 (site home page returned with 200)
+  - url: https://api.github.com/orgs/aPrioriDocumentation
+    http_status: 404
+disclaimer: >-
+  CANDIDATE ONLY. This is API Evangelist's derivation of what an MCP server over the aP Connect Agent REST
+  API would expose, computed from the operations aPriori publishes. aPriori does not ship this. Nothing here
+  is presented as a vendor artifact, and no endpoint URL is asserted.
+server:
+  name: apriori-ap-connect
+  transport: not applicable
+  url: null
+  note: >-
+    Any such server would have to run inside the customer's network alongside the Agent, since the Agent
+    itself is only reachable at localhost:<port_number> on the customer-managed host.
+auth:
+  methods: [apikey]
+  detail: >-
+    Would inherit the Agent's two published schemes — a JWT bearer `Authorization` header or a `key` query
+    parameter — plus Connector mTLS where configured. No OAuth: aPriori publishes no authorization server.
+  see: authentication/apriori-authentication.yml
+tool_count: 12
+tools:
+- {name: get_service_configuration, category: agent, rest: getServiceConfiguration, description: "Return the aP Connect Agent's configuration — PLM type, aP Connect and file-system connector host URLs, scan rate, reconnection interval, root folder path, max parts to return."}
+- {name: get_service_status, category: agent, rest: getServiceStatus, description: "Return live Agent health — service status, aP Connect (CIC) connection status, PLM connection status, in-flight job count, service time."}
+- {name: create_shutdown_nonce, category: agent, rest: createShutdownNonce, description: "Mint a single-use shutdownCode that must be presented back to authorise an Agent shutdown."}
+- {name: initiate_shutdown, category: agent, rest: initiateShutdown, description: "Initiate Agent shutdown using a previously minted nonce. Only published mode is completeAndTerminate. DESTRUCTIVE."}
+- {name: list_workflows, category: workflow, rest: listWorkflows, description: "List every workflow configured on this Agent, with id, name, description, locked flag and part-selection type."}
+- {name: get_workflow, category: workflow, rest: getWorkflow, description: "Return details for one workflow by workflowIdentity."}
+- {name: run_workflow, category: workflow, rest: runWorkflowAction, description: "Invoke a workflow. action=run starts a file-system or query-based job; action=runPartList starts a REST-driven job over an explicit component list with costingInputs. Returns a jobId. WRITE."}
+- {name: list_workflow_jobs, category: workflow, rest: listWorkflowJobs, description: "List jobs for a workflow, with identity, status and output folder."}
+- {name: get_workflow_job, category: workflow, rest: getWorkflowJob, description: "Return one job's state — status, startedAt, completedAt, component counters and any errorMessage. This is the polling call."}
+- {name: cancel_workflow_job, category: workflow, rest: runWorkflowJobAction, description: "Run a job action. Only published action is cancel. WRITE."}
+- {name: get_job_results, category: results, rest: getJobResults, description: "Return costing results for every part in a job, including all User Defined Attributes. Answers 409 while the job is non-terminal."}
+- {name: get_part_results, category: results, rest: getPartResults, description: "Return costing results for one PLM part within a job, including all User Defined Attributes. Answers 409 while the job is non-terminal."}
+input_schemas:
+  source: openapi/apriori-ap-connect-agent.yml
+  detail: >-
+    Every tool above inherits its real inputSchema from the parameters and requestBody of the backing
+    operation in the OpenAPI. Nothing is invented — see mcp/apriori-tool-crosswalk.yml for the binding.
+agent_notes:
+- Costing is asynchronous — run_workflow returns a jobId, then poll get_workflow_job until terminal before calling either results tool.
+- A 409 from a results tool means "not finished yet", not "failed".
+- initiate_shutdown and cancel_workflow_job are destructive and should be gated behind explicit human confirmation.
+- run_workflow with runPartList must always include a costingInputs object on each part, even when empty.
+- Results payloads are open objects carrying customer-defined attributes; do not assume a fixed field set.

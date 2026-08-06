@@ -1,0 +1,43 @@
+generated: '2026-08-06'
+method: generated
+source: >-
+  Packaged Agent Skills generated from openapi/apriori-ap-connect-agent.yml (12 operations), which API
+  Evangelist transcribed from aPriori's published aP Connect Agent REST API Reference Guide at
+  https://docs.apriori.com/en/Connect/apc/rarg/. Every step is grounded in an operationId verified verbatim
+  in that spec; cross-cutting rules cite ../authentication/, ../conventions/, ../errors/ and ../data-model/.
+searched:
+  result: none
+  detail: >-
+    aPriori publishes no AGENTS.md, no skills directory and no llms.txt on any host. Probed
+    www.apriori.com/llms.txt (404) and docs.apriori.com/llms.txt (soft-404, HTTP 200 with the site home
+    page). aPriori has no public GitHub organisation.
+coverage:
+  operations_total: 12
+  operations_covered: 12
+skills:
+- file: apriori-run-a-rest-driven-costing-job.md
+  name: Run a REST-driven costing job and collect results
+  api: openapi/apriori-ap-connect-agent.yml
+  operations: [listWorkflows, getWorkflow, runWorkflowAction, getWorkflowJob, getJobResults, getPartResults]
+  destructive: false
+- file: apriori-monitor-an-agent-and-its-jobs.md
+  name: Monitor an aP Connect Agent and its jobs
+  api: openapi/apriori-ap-connect-agent.yml
+  operations: [getServiceStatus, getServiceConfiguration, listWorkflows, listWorkflowJobs, getWorkflowJob, runWorkflowJobAction]
+  destructive: partial
+  note: Step 6 (cancel a job) is a write.
+- file: apriori-shut-down-an-agent-safely.md
+  name: Shut down an aP Connect Agent safely
+  api: openapi/apriori-ap-connect-agent.yml
+  operations: [getServiceStatus, createShutdownNonce, initiateShutdown]
+  destructive: true
+  note: Stops a production PLM-to-aPriori integration. Requires explicit human confirmation.
+global_rules:
+- The Agent is customer-hosted at localhost:<port_number>; the caller must be on a machine networked to it.
+- Send Content-Type application/json on every request, including GETs — 415 is documented on all 12 operations.
+- Prefer the JWT Bearer Authorization header over the `key` query parameter; query-string secrets are logged.
+- Costing is fire-and-poll. A 409 from a results endpoint means "not finished", not "failed".
+- No idempotency key exists. Retrying an invocation can start a second job; reconcile on jobId.
+- No error body is published for any status — branch on the HTTP status code alone.
+- Per-component failures arrive inside a 200 as errorMessage / cicStatus, not as HTTP errors.
+- Results payloads carry the customer's User Defined Attributes, so treat them as open objects.

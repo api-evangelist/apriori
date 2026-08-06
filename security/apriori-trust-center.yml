@@ -1,0 +1,45 @@
+generated: '2026-08-06'
+method: searched
+probe: true
+source: https://www.apriori.com/security/
+url: https://www.apriori.com/security/
+name: aPriori Cloud Security & Compliance
+trust_center:
+  vendor: Vanta
+  url: https://trust.apriori.com/
+  canonical_url: https://app.vanta.com/apriori.com/trust/891knlea3q7s5l6kvrkv
+  verified: '2026-08-06'
+  http_status: 200
+  title: apriori.com Trust Center
+certifications:
+- name: ISO/IEC 27001
+  status: certified
+  evidence: Certification seal displayed on https://www.apriori.com/security/
+- name: SOC 2
+  status: published
+  evidence: AICPA SOC 2 badge displayed on https://www.apriori.com/security/
+- name: GDPR
+  status: claimed
+  evidence: GDPR compliance badge displayed on https://www.apriori.com/security/
+controls_published:
+- Identity and access management (IAM) controls
+- Auth0 single sign-on via a dedicated production tenant
+- SAML integration with customer identity providers
+- Encryption at rest using AWS KMS with annual key rotation
+- Network segmentation for sensitive systems
+- Regular risk assessments and a maintained risk register
+- Vendor management program
+infrastructure:
+  cloud: AWS
+  note: aPriori is listed as an AWS Partner Network member on its security page.
+evidence:
+- url: https://www.apriori.com/security/
+  http_status: 200
+  keywords: [iso 27001, soc 2, gdpr, vanta, aws kms, auth0]
+- url: https://trust.apriori.com/
+  http_status: 200
+  note: Live Vanta-hosted trust center for apriori.com.
+notes: >-
+  No vulnerability disclosure policy, security.txt or bug-bounty program was found on any aPriori host
+  (see the well-known/ index for the probed paths and their statuses), so no VulnerabilityDisclosure
+  artifact is asserted.

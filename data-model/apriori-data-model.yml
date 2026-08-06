@@ -1,0 +1,157 @@
+generated: '2026-08-06'
+method: derived
+source: openapi/apriori-ap-connect-agent.yml
+api: aP Connect Agent REST API
+summary: >-
+  Entity-relationship graph derived from the $ref links and path hierarchy of the aP Connect Agent REST API.
+  The domain is small and strictly hierarchical: an Agent hosts Workflows, a Workflow spawns Jobs, and a Job
+  produces per-Part costing results.
+identifiers:
+  style: opaque strings, no published prefixes or format
+  fields:
+  - entity: Workflow
+    field: id
+    used_as_path_param: workflowIdentity
+  - entity: WorkflowJob
+    field: identity
+    used_as_path_param: jobIdentity
+  - entity: WorkflowJobSummary
+    field: identity
+    used_as_path_param: jobIdentity
+  - entity: WorkflowActionResult
+    field: jobId
+    note: The identifier returned when a workflow action is invoked; the handle you poll on.
+  - entity: PartCostingResult
+    field: partId
+    used_as_path_param: plmPartIdentity
+    note: The PLM system's part identity, not an aPriori-minted id.
+entities:
+- name: ServiceConfiguration
+  kind: singleton
+  endpoint: GET /api/configuration
+  description: Agent-level configuration — PLM type, host URLs, scan rate, reconnection interval, root folder, max parts to return.
+  key_fields: [plmType, cicHostUrl, fscUrl, hostname, rootFolderPath, scanRate, reconnectionInterval, maxPartsToReturn, csrfTokenTimeoutSeconds]
+- name: ServiceStatus
+  kind: singleton
+  endpoint: GET /api/status
+  description: Live Agent health — connection state to aP Connect (CIC) and to the PLM, plus in-flight job count.
+  key_fields: [serviceStatus, cicConnectionStatus, plmConnectionStatus, jobCount, serviceTime]
+- name: Shutdown
+  kind: token
+  endpoint: POST /api/shutdown
+  description: Single-use shutdown nonce minted by the Agent and presented back to authorise a shutdown.
+  key_fields: [shutdownCode]
+- name: ShutdownConfigs
+  kind: request
+  description: Shutdown request body. Only mode published is completeAndTerminate.
+  key_fields: [shutdownMode]
+- name: Workflow
+  kind: resource
+  endpoint: GET /api/workflows, GET /api/workflows/{workflowIdentity}
+  description: A configured aP Connect workflow — the unit that selects components and runs costing against them.
+  key_fields: [id, name, description, locked, partSelectionType]
+  enums:
+    partSelectionType: [Spreadsheet, REST API request, Query definition]
+- name: WorkflowActionResult
+  kind: response
+  endpoint: POST /api/workflows/{workflowIdentity}/{action}
+  description: Acknowledgement of a run / runPartList invocation; carries the job handle.
+  key_fields: [jobId, startedAt]
+- name: WorkflowJobSummary
+  kind: resource
+  endpoint: GET /api/workflows/{workflowIdentity}/jobs
+  description: Lightweight job listing projection.
+  key_fields: [identity, status, outputFolder]
+- name: WorkflowJob
+  kind: resource
+  endpoint: GET /api/workflows/{workflowIdentity}/jobs/{jobIdentity}
+  description: A single costing run of a workflow, with progress counters and terminal-state timestamps.
+  key_fields: [identity, status, startedAt, completedAt, componentsTotal, componentsProcessed, componentsFailed, outputFolder, errorMessage]
+- name: PartCostingResult
+  kind: resource
+  description: >-
+    Per-component costing outcome, joining PLM identity to aPriori costing inputs and outputs. Carries the
+    workflow's User Defined Attributes as additional properties.
+  key_fields: [partId, partNumber, partName, revisionNumber, partType, scenarioName, cicStatus, errorMessage, cidPartNumber, cidPartLink, apwScenarioLink, checkInUser, description, costingResult]
+- name: CostingInput
+  kind: value-object
+  description: The manufacturing assumptions a part was costed under.
+  key_fields: [processGroupName, materialName, vpeName, annualVolume, batchSize, productionLife, machiningMode, targetCost, targetMass]
+- name: CostingResult
+  kind: value-object
+  description: The costing and sustainability outputs for a part.
+  key_fields: [fullyBurdenedCost, totalCost, materialCost, capitalInvestment, cycleTime, laborTime, utilization, routingName, roughMass, finishMass, dfmRisk, dfmScore, totalCarbon, materialCarbon, processCarbon, logisticsCarbon, annualManufacturingCarbon]
+relationships:
+- from: ServiceConfiguration
+  to: Workflow
+  type: has_many
+  via: Agent scope (path hierarchy, /api/configuration and /api/workflows share one Agent)
+  confidence: high
+- from: Workflow
+  to: WorkflowJob
+  type: has_many
+  via: path hierarchy /api/workflows/{workflowIdentity}/jobs
+  confidence: high
+- from: WorkflowJob
+  to: Workflow
+  type: belongs_to
+  via: workflowIdentity path parameter
+  confidence: high
+- from: Workflow
+  to: WorkflowActionResult
+  type: has_many
+  via: POST /api/workflows/{workflowIdentity}/{action} returns jobId
+  confidence: high
+- from: WorkflowActionResult
+  to: WorkflowJob
+  type: has_one
+  via: jobId -> WorkflowJob.identity
+  confidence: high
+  note: >-
+    Inferred from the polling flow aPriori documents — the jobId returned by a workflow action is the
+    identity used on the jobs endpoints. The two field names differ (jobId vs identity), which is the only
+    join in this model that is not an exact name match.
+- from: WorkflowJobSummary
+  to: WorkflowJob
+  type: has_one
+  via: identity
+  confidence: high
+- from: WorkflowJob
+  to: PartCostingResult
+  type: has_many
+  via: path hierarchy /api/workflows/{workflowIdentity}/jobs/{jobIdentity}/parts/{plmPartIdentity}/results
+  confidence: high
+- from: PartCostingResult
+  to: CostingInput
+  type: has_one
+  via: $ref field `input`
+  confidence: high
+- from: PartCostingResult
+  to: CostingResult
+  type: has_one
+  via: $ref field `result`
+  confidence: high
+external_references:
+- field: PartCostingResult.partId
+  points_at: PLM part identity (Windchill / Teamcenter / file system)
+- field: PartCostingResult.cidPartLink
+  points_at: aPriori Cost Insight Design deep link
+- field: PartCostingResult.apwScenarioLink
+  points_at: aP Workspace scenario deep link
+- field: ServiceConfiguration.cicHostUrl
+  points_at: aP Connect (Cost Insight Connect) host
+- field: ServiceConfiguration.fscUrl
+  points_at: file system connector host
+open_extension:
+  mechanism: User Defined Attributes (UDAs)
+  detail: >-
+    Since Agent 4.0.0 the results payloads include every UDA defined in the customer's workflow setup, so
+    PartCostingResult is an open object — the documented fields are a floor, not a ceiling.
+render: none
+x-evidence:
+  fetched: '2026-08-06'
+  sources:
+  - url: https://docs.apriori.com/en/Connect/apc/rarg/Definitions/
+    http_status: 200
+  - url: https://docs.apriori.com/en/Connect/apc/rarg/Paths/
+    http_status: 200

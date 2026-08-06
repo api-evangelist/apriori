@@ -1,0 +1,82 @@
+generated: '2026-08-06'
+method: searched
+source: https://docs.apriori.com/en/Connect/apc/rn/release-notes/
+api: aP Connect Agent REST API
+versioning:
+  scheme: semantic versioning on the software component, not on the URL
+  api_version: 4.0.2
+  api_version_source: https://docs.apriori.com/en/Connect/apc/rarg/overview/
+  url_versioning: false
+  detail: >-
+    Resource paths are unversioned (/api/workflows, /api/status...). The major version appears only in the
+    Agent's own generated spec path, /v4/api-docs. Customers pin behaviour by pinning the aP Connect Agent
+    build; release notes name Agent and App versions separately (aP Connect Agent 5.2.0 / aP Connect App
+    4.1.0 are independent lines).
+  policy_published: false
+  note: >-
+    aPriori publishes no written API versioning policy — no statement of what constitutes a breaking change,
+    how long a major version is supported, or how a new major would be introduced.
+deprecation:
+  policy_published: false
+  sunset_header: not published
+  deprecation_header: not published
+  rfc8594: false
+  deprecated_operations: []
+  detail: >-
+    No deprecation policy, no RFC 8594 Sunset/Deprecation header usage, and no operation in the published
+    reference is marked deprecated. The only removal-adjacent statement found is a per-feature limitation
+    note (Windchill enumerated value lists, 2025-01-30). Because there is no deprecation policy, no
+    `type: Deprecation` pointer is emitted in apis.yml.
+  compatibility_signals:
+  - >-
+    Release notes state minimum Agent versions as feature requirements (e.g. "Requires Agent 5.3.0 or
+    later"), which is the closest thing aPriori publishes to a compatibility contract.
+  - >-
+    Dedicated compatibility pages exist per release train, e.g.
+    https://docs.apriori.com/en/Workspace/apw/rn/1-0-1/compatibility/
+status_page:
+  published: false
+  detail: >-
+    No aPriori Technologies status page was found. status.apriori.com does not resolve. apriori.statuspage.io
+    returns HTTP 200 titled "aPriori Status" but its components are "Staking" and "Withdrawal" — it belongs
+    to an unrelated crypto/liquid-staking project of the same name and is deliberately NOT recorded as
+    aPriori's status page. Because there is no status page, no `type: StatusPage` pointer is emitted.
+  probes:
+  - url: https://status.apriori.com/
+    status: 0
+    note: DNS does not resolve
+  - url: https://apriori.statuspage.io/
+    status: 200
+    note: different company (crypto staking); rejected
+sla:
+  published: false
+  detail: >-
+    No public SLA or uptime commitment. aPriori sells through a sales motion (no public self-serve signup)
+    and directs API work to a paid engagement — the aP Connect System Administration Guide states "An
+    aPriori System Services engagement is recommended for leveraging the aP Connect Agent REST API for your
+    file system deployment."
+  source: https://docs.apriori.com/en/Connect/apc/sag/REST-API-Management-Responsibilities/
+support:
+  channel: https://support.apriori.com/hc/en-us
+  note: Support portal returns HTTP 403 to unauthenticated automated clients; it is a customer-facing Zendesk help center.
+  phone: '+1 978 371 2006'
+  training: https://aprioriacademy.learnupon.com/catalog
+release_cadence:
+  observed: >-
+    Dated release-note entries roughly every 1-3 months across 2024, a quieter 2025, and a run of entries in
+    Apr / May / Jun 2026.
+  most_recent_entry: '2026-06-30'
+  see: changelog/apriori-changelog.yml
+x-evidence:
+  fetched: '2026-08-06'
+  sources:
+  - url: https://docs.apriori.com/en/Connect/apc/rn/release-notes/
+    http_status: 200
+  - url: https://docs.apriori.com/en/Connect/apc/rarg/overview/
+    http_status: 200
+  - url: https://docs.apriori.com/en/Connect/apc/sag/REST-API-Management-Responsibilities/
+    http_status: 200
+  - url: https://apriori.statuspage.io/
+    http_status: 200
+  - url: https://status.apriori.com/
+    http_status: 0

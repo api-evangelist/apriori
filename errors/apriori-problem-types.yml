@@ -1,0 +1,97 @@
+generated: '2026-08-06'
+method: derived
+source: openapi/apriori-ap-connect-agent.yml
+docs: https://docs.apriori.com/en/Connect/apc/rarg/Paths/
+api: aP Connect Agent REST API
+format: none
+rfc9457: false
+envelope:
+  published: false
+  detail: >-
+    aPriori documents every non-2xx response of the aP Connect Agent REST API with the schema "No Content".
+    There is no error body, no machine-readable error code vocabulary, no problem+json media type and no
+    documented message field. Consumers branch on the HTTP status code alone. The catalogue below is the
+    complete set of status codes aPriori publishes, with the meaning it publishes for each.
+statuses:
+- status: 400
+  title: Bad Request
+  applies_to: all 12 operations
+  remediation: >-
+    Malformed request. For POST /api/workflows/{workflowIdentity}/runPartList, verify the body includes a
+    `parts` array and that each part carries a `costingInputs` object — aPriori states costingInputs must be
+    present even when you do not intend to set any costing input values.
+- status: 401
+  title: Unauthorized
+  applies_to: all 12 operations
+  remediation: >-
+    No credential accepted. Supply either the `Authorization` JWT bearer header or the `key` shared-secret
+    query parameter. Where the Connector is configured for mTLS, the Agent host must also present the
+    aPriori-signed certificate issued at install time.
+- status: 403
+  title: Forbidden
+  applies_to: all 12 operations
+  remediation: >-
+    Credential recognised but not permitted for this Agent or workflow. Historically this also covered a
+    caller whose source IP was not on the Agent host allowlist; mTLS (2026-06-30) replaces that control.
+- status: 404
+  title: Resource Not Found
+  applies_to: all 12 operations
+  remediation: >-
+    The workflowIdentity, jobIdentity or plmPartIdentity does not exist on this Agent. Re-resolve the
+    identity from GET /api/workflows or GET /api/workflows/{workflowIdentity}/jobs.
+- status: 409
+  title: Conflict when job is not in terminal state
+  applies_to:
+  - getJobResults
+  - getPartResults
+  remediation: >-
+    This is the API's polling signal, not a failure. The costing job has not finished. Poll
+    GET /api/workflows/{workflowIdentity}/jobs/{jobIdentity} until `status` reaches a terminal value and
+    `completedAt` is populated, then re-request results. Do not retry results in a tight loop.
+  semantics: retryable
+- status: 415
+  title: Unsupported Media Type
+  applies_to: all 12 operations
+  remediation: >-
+    Set Content-Type to application/json. aPriori documents 415 on the GET operations as well, so send the
+    header even on read requests.
+success_statuses:
+- status: 200
+  title: OK
+  applies_to: [getServiceConfiguration, getServiceStatus, createShutdownNonce, listWorkflows, getWorkflow, runWorkflowAction, listWorkflowJobs, getWorkflowJob, getJobResults, getPartResults]
+- status: 201
+  title: Created
+  applies_to: [createShutdownNonce, initiateShutdown, runWorkflowAction, runWorkflowJobAction]
+- status: 202
+  title: Accepted
+  applies_to: [runWorkflowJobAction]
+- status: 204
+  title: Shutdown initiated
+  applies_to: [initiateShutdown]
+in_band_error_fields:
+  detail: >-
+    Where the transport succeeds but an individual component fails to cost, the error surfaces INSIDE a 200
+    response rather than as an HTTP error. Two documented fields carry it.
+  fields:
+  - object: WorkflowJob
+    field: errorMessage
+    note: Job-level failure text; read alongside componentsFailed / componentsTotal.
+  - object: PartCostingResult
+    field: errorMessage
+    note: >-
+      Per-part failure text, alongside `cicStatus`. Since aP Connect App 3.7.0 (2024-05-01) an assembly
+      failure reports the originating part's message instead of a generic one.
+  source: https://docs.apriori.com/en/Connect/apc/rarg/Definitions/
+gaps:
+- No error code vocabulary is published.
+- No error response body schema is published for any status.
+- No documentation of retry-after or backoff guidance for the 409 polling case.
+x-evidence:
+  fetched: '2026-08-06'
+  sources:
+  - url: https://docs.apriori.com/en/Connect/apc/rarg/Paths/
+    http_status: 200
+  - url: https://docs.apriori.com/en/Connect/apc/rarg/Definitions/
+    http_status: 200
+  - url: https://docs.apriori.com/en/Connect/apc/rarg/returns-the-costing-results-for-all-parts-within-a-job/
+    http_status: 200

@@ -30,37 +30,20 @@ tags:
 - workflow-automation
 - cad
 apis:
-- name: aP Connect Agent REST API
-  description: >-
-    REST API served by the customer-installed aP Connect Agent. Retrieves Agent service configuration and
-    status, lists aP Connect workflows, invokes workflow actions (run and runPartList — the REST-driven
-    costing job that accepts an explicit component list plus costing inputs), lists and cancels workflow
-    jobs, and returns costing results for a whole job or a single PLM part, including any User Defined
-    Attributes configured on the workflow. Two published auth schemes — a JWT bearer Authorization header
-    and a shared-secret `key` query parameter — with certificate-based mTLS added at the Connector level in
-    June 2026.
+- aid: apriori:apriori-agent-api
+  name: aPriori Agent API
+  description: Agent Controller
   humanURL: https://docs.apriori.com/en/Connect/apc/rarg/overview/
   baseURL: http://localhost/api
-  x-baseurl-note: >-
-    NOT a placeholder. aPriori documents the base URL for this API as "localhost:<port_number>/" because the
-    aP Connect Agent runs on a customer-managed host inside the customer's network; there is no
-    vendor-hosted origin to point at. The Agent also publishes its own machine-readable spec at
-    http://localhost:<port_number>/v4/api-docs, reachable only by a customer running the Agent.
   tags:
-  - manufacturing
-  - product-cost-management
-  - plm-integration
-  - workflow-automation
-  - should-cost
+  - Agent
   properties:
+  - type: OpenAPI
+    url: openapi/apriori-agent-api-openapi.yml
   - type: Documentation
     url: https://docs.apriori.com/en/Connect/apc/sag/REST-API-Management-Responsibilities/
   - type: APIReference
     url: https://docs.apriori.com/en/Connect/apc/rarg/overview/
-  - type: OpenAPI
-    url: openapi/apriori-ap-connect-agent.yml
-  - type: Overlay
-    url: overlays/apriori-ap-connect-agent-overlay.yaml
   - type: Authentication
     url: authentication/apriori-authentication.yml
   - type: Conventions
@@ -71,9 +54,33 @@ apis:
     url: data-model/apriori-data-model.yml
   - type: ChangeLog
     url: changelog/apriori-changelog.yml
-  - type: AgentSkill
-    url: skills/_index.yml
+- aid: apriori:apriori-workflow-api
+  name: aPriori Workflow API
+  description: Workflows Controller
+  humanURL: https://docs.apriori.com/en/Connect/apc/rarg/overview/
+  baseURL: http://localhost/api
+  tags:
+  - Workflow
+  properties:
+  - type: OpenAPI
+    url: openapi/apriori-workflow-api-openapi.yml
+  - type: Documentation
+    url: https://docs.apriori.com/en/Connect/apc/sag/REST-API-Management-Responsibilities/
+  - type: APIReference
+    url: https://docs.apriori.com/en/Connect/apc/rarg/overview/
+  - type: Authentication
+    url: authentication/apriori-authentication.yml
+  - type: Conventions
+    url: conventions/apriori-conventions.yml
+  - type: ErrorCatalog
+    url: errors/apriori-problem-types.yml
+  - type: DataModel
+    url: data-model/apriori-data-model.yml
+  - type: ChangeLog
+    url: changelog/apriori-changelog.yml
 common:
+- type: Overlay
+  url: overlays/apriori-ap-connect-agent-overlay.yaml
 - type: Website
   url: https://www.apriori.com/
 - type: Documentation

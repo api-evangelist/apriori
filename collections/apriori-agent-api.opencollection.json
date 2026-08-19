@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "aP Connect REST Agent API",
+    "version": "4.0.2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Agent",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns the service configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:{port_number}/api/configuration",
+            "auth": {
+              "type": "apikey",
+              "key": "key",
+              "value": "{{key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Returns the service configuration"
+        },
+        {
+          "info": {
+            "name": "Returns the service status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:{port_number}/api/status",
+            "auth": {
+              "type": "apikey",
+              "key": "key",
+              "value": "{{key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Returns the service status"
+        },
+        {
+          "info": {
+            "name": "Creates and returns a shutdown nonce",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:{port_number}/api/shutdown",
+            "auth": {
+              "type": "apikey",
+              "key": "key",
+              "value": "{{key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Creates and returns a shutdown nonce"
+        },
+        {
+          "info": {
+            "name": "Initiates shutdown",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:{port_number}/api/shutdown/:nonce",
+            "params": [
+              {
+                "name": "nonce",
+                "value": "",
+                "type": "path",
+                "description": "nonce"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "key",
+              "value": "{{key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Requires a nonce to verify the shutdown request. Supported modes are: [completeAndTerminate]"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

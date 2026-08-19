@@ -1,0 +1,1507 @@
+{
+  "item": [
+    {
+      "id": "b2b0f659-4265-47ff-a3fa-cefbc55015e0",
+      "name": "Agent",
+      "description": {
+        "content": "Agent Controller",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "be2159a6-0fa2-44e6-be49-dbf2b97dfe88",
+          "name": "Returns the service configuration",
+          "request": {
+            "name": "Returns the service configuration",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "configuration"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                  "type": "any",
+                  "value": "{{port_number}}",
+                  "key": "port_number"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "05c3f720-c2d6-4c5b-86ac-1ae35e86a081",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "configuration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"cicHostUrl\": \"string\",\n  \"csrfTokenTimeoutSeconds\": 685,\n  \"fscUrl\": \"string\",\n  \"hostname\": \"string\",\n  \"maxPartsToReturn\": 7007,\n  \"plmType\": \"MOCK\",\n  \"reconnectionInterval\": 7355,\n  \"rootFolderPath\": \"string\",\n  \"scanRate\": 3029\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "473240ca-f2d8-47bb-95ee-d9146bfe5396",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "configuration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a3cf1116-a534-4f07-b315-971ce6341bf2",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "configuration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bd83f2b3-2067-405c-945c-352eb31a4f26",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "configuration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e5d29124-70cc-44c3-ab72-924acf84bc4b",
+              "name": "Resource Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "configuration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "185f9d06-d94b-4d76-a493-dd5526315bb0",
+              "name": "Unsupported Media Type",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "configuration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8809224a-1226-4d84-a9f0-0e07f1736d24",
+          "name": "Returns the service status",
+          "request": {
+            "name": "Returns the service status",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                  "type": "any",
+                  "value": "{{port_number}}",
+                  "key": "port_number"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bab7bb76-5a16-4047-878b-20b99f8c3c79",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"cicConnectionStatus\": \"string\",\n  \"jobCount\": 4807,\n  \"plmConnectionStatus\": \"string\",\n  \"serviceStatus\": \"string\",\n  \"serviceTime\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "99b8e341-c9c3-4c5b-835e-b641665fd428",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "539edb4d-1e97-418b-968d-cc65b08bdc76",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a187cff1-5ada-403c-944d-a87e78367c16",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "aa95c333-84a8-435d-a188-d2ab4ba4df9a",
+              "name": "Resource Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7c42b4b1-5b95-4216-9d9d-74c200fd33d9",
+              "name": "Unsupported Media Type",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "065c2802-d539-4fe5-8d0d-3a45343cf334",
+          "name": "Creates and returns a shutdown nonce",
+          "request": {
+            "name": "Creates and returns a shutdown nonce",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "shutdown"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                  "type": "any",
+                  "value": "{{port_number}}",
+                  "key": "port_number"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2b093665-2fd9-4862-8069-645abd9ebb06",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "shutdown"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"shutdownCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "83d723ee-9341-48f6-abdb-76c3c00b87fc",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "shutdown"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4c01ad02-8cbf-4697-9b09-7efe5bf706b9",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "shutdown"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ad896d77-f972-4bad-aac2-118f815ec0e8",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "shutdown"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e6bd7c7b-ca52-46b8-af21-53fa84b0c0a5",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "shutdown"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f7d1bfaf-0b18-478e-9d6b-bbf7a2856d05",
+              "name": "Resource Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "shutdown"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9f46fc9f-2ded-4921-af20-8b18d1f237c2",
+              "name": "Unsupported Media Type",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "shutdown"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0834b96e-281a-478a-b772-ec06cfc5cf53",
+          "name": "Initiates shutdown",
+          "request": {
+            "name": "Initiates shutdown",
+            "description": {
+              "content": "Requires a nonce to verify the shutdown request. Supported modes are: [completeAndTerminate]",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "shutdown",
+                ":nonce"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "nonce",
+                  "description": "(Required) nonce"
+                },
+                {
+                  "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                  "type": "any",
+                  "value": "{{port_number}}",
+                  "key": "port_number"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shutdownMode\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "05221005-25c8-4bc4-ab54-cfa648cf4416",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "shutdown",
+                    ":nonce"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nonce",
+                      "description": "(Required) nonce"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shutdownMode\": \"completeAndTerminate\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a66fbe64-7323-4f43-9825-28adc1ab415c",
+              "name": "Shutdown initiated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "shutdown",
+                    ":nonce"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nonce",
+                      "description": "(Required) nonce"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shutdownMode\": \"completeAndTerminate\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "28f0ad0b-fd96-4441-8b9b-26320803a2b5",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "shutdown",
+                    ":nonce"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nonce",
+                      "description": "(Required) nonce"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shutdownMode\": \"completeAndTerminate\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "eeac3315-b630-46fd-abc4-6b351c45817e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "shutdown",
+                    ":nonce"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nonce",
+                      "description": "(Required) nonce"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shutdownMode\": \"completeAndTerminate\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0db4c528-997d-4983-be65-01193a4252a7",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "shutdown",
+                    ":nonce"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nonce",
+                      "description": "(Required) nonce"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shutdownMode\": \"completeAndTerminate\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2964f106-89b3-4ede-a695-094281175191",
+              "name": "Resource Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "shutdown",
+                    ":nonce"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nonce",
+                      "description": "(Required) nonce"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shutdownMode\": \"completeAndTerminate\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "71e01734-3303-4b3d-b774-4834962104c7",
+              "name": "Unsupported Media Type",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "shutdown",
+                    ":nonce"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "nonce",
+                      "description": "(Required) nonce"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shutdownMode\": \"completeAndTerminate\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "8080",
+      "key": "port_number"
+    },
+    {
+      "type": "string",
+      "value": "http://localhost:{{port_number}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f5bea3ca-7ec8-49d4-b2ff-11d93f3e6a91",
+    "name": "aP Connect REST Agent API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The aP Connect Agent REST API allows you to retrieve information about your aP Connect Agent and Workflows or to initiate actions, such as service shutdowns or workflow invocations, from a machine or server that is networked to your Agent.\n\nPROVENANCE: this document was reconstructed by API Evangelist from aPriori's own published \"aP Connect Agent REST API Reference Guide\" at https://docs.apriori.com/en/Connect/apc/rarg/ — a swagger2markup-style rendering (Overview / Paths / Definitions / Security sections) of the Agent's live spec. aPriori does NOT serve a spec on a public host: the machine-readable definition is published by the Agent itself at `http://localhost:<port_number>/v4/api-docs`, which only a customer running the Agent can reach. Nothing here is invented; every path, parameter, response code, schema property and security scheme is transcribed from the published reference pages. The one inference is flagged with `x-inferred: true` (see /api/shutdown/{nonce}).\n\nContact Support:\n Name: aPriori Customer Support",
+      "type": "text/plain"
+    }
+  }
+}

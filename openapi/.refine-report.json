@@ -1,0 +1,20 @@
+{
+  "provider": "apriori",
+  "sources": [
+    "apriori-agent-api-openapi.yml",
+    "apriori-workflow-api-openapi.yml"
+  ],
+  "outputs": [
+    "apriori-agent-api-openapi.yml",
+    "apriori-workflow-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "apriori-agent-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apriori-workflow-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": []
+}

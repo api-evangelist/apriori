@@ -1,0 +1,475 @@
+openapi: 3.2.0
+info:
+  title: aP Connect Agent REST Workflow API
+  version: 4.0.2
+  description: 'The aP Connect Agent REST API allows you to retrieve information about your aP Connect Agent and Workflows or to initiate actions, such as service shutdowns or workflow invocations, from a machine or server that is networked to your Agent.
+
+
+    PROVENANCE: this document was reconstructed by API Evangelist from aPriori''s own published "aP Connect Agent REST API Reference Guide" at https://docs.apriori.com/en/Connect/apc/rarg/ — a swagger2markup-style rendering (Overview / Paths / Definitions / Security sections) of the Agent''s live spec. aPriori does NOT serve a spec on a public host: the machine-readable definition is published by the Agent itself at `http://localhost:<port_number>/v4/api-docs`, which only a customer running the Agent can reach. Nothing here is invented; every path, parameter, response code, schema property and security scheme is transcribed from the published reference pages. The one inference is flagged with `x-inferred: true` (see /api/shutdown/{nonce}).'
+  contact:
+    name: aPriori Customer Support
+    url: https://support.apriori.com/hc/en-us
+  x-evidence:
+    fetched: '2026-08-06'
+    method: derived
+    sources:
+    - url: https://docs.apriori.com/en/Connect/apc/rarg/overview/
+      http_status: 200
+    - url: https://docs.apriori.com/en/Connect/apc/rarg/Paths/
+      http_status: 200
+    - url: https://docs.apriori.com/en/Connect/apc/rarg/Definitions/
+      http_status: 200
+    - url: https://docs.apriori.com/en/Connect/apc/rarg/Security/
+      http_status: 200
+    live_spec_endpoint: http://localhost:<port_number>/v4/api-docs
+    live_spec_reachable: false
+    live_spec_note: Customer-hosted Agent. The Agent publishes its own OpenAPI/Swagger at /v4/api-docs on localhost; there is no public URL to fetch it from.
+  x-operation-ids: aPriori's published reference renders operation summaries, not operationIds. The operationId values in this document were derived from those summaries by API Evangelist and are NOT asserted to match the Agent's own operationIds.
+servers:
+- url: http://localhost:{port_number}
+  description: The aP Connect Agent runs on a customer-managed host. aPriori documents the base URL as "localhost:<port_number>/" — there is no vendor-hosted origin.
+  variables:
+    port_number:
+      default: '8080'
+      description: Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.
+tags:
+- name: Workflow
+  description: Workflows Controller
+paths:
+  /api/workflows:
+    get:
+      tags:
+      - Workflow
+      summary: Returns a list of all workflows
+      operationId: listWorkflows
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Workflow'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '415':
+          $ref: '#/components/responses/UnsupportedMediaType'
+      security:
+      - SharedSecret: []
+      - JWTBearer: []
+  /api/workflows/{workflowIdentity}:
+    get:
+      tags:
+      - Workflow
+      summary: Returns details to a given workflow
+      operationId: getWorkflow
+      parameters:
+      - name: workflowIdentity
+        in: path
+        required: true
+        description: workflowIdentity
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Workflow'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '415':
+          $ref: '#/components/responses/UnsupportedMediaType'
+      security:
+      - SharedSecret: []
+      - JWTBearer: []
+  /api/workflows/{workflowIdentity}/{action}:
+    post:
+      tags:
+      - Workflow
+      summary: Runs a workflow action
+      description: 'Currently supported actions: [run, runPartList]. run — Invoke a file system or query-based job. runPartList — Invoke a REST-driven job including the specified components and optional inputs. When using the runPartList endpoint, regardless of whether you intend to specify costing input values, you must include the costingInputs section in the request body.'
+      operationId: runWorkflowAction
+      parameters:
+      - name: workflowIdentity
+        in: path
+        required: true
+        description: workflowIdentity
+        schema:
+          type: string
+      - name: action
+        in: path
+        required: true
+        description: action
+        schema:
+          type: string
+          enum:
+          - run
+          - runPartList
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              description: runPartList request body. aPriori publishes this as an example payload rather than a named definition; the shape below is transcribed from the published "runPartList Example".
+              properties:
+                parts:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      costingInputs:
+                        type: object
+                        description: Required for runPartList even when empty. May carry User Defined Attributes (UDAs) alongside the standard costing inputs.
+                        additionalProperties: true
+                      relativeCadFilePath:
+                        type:
+                        - string
+                        - 'null'
+            example:
+              parts:
+              - id: abcplmpartid
+                costingInputs:
+                  description: CIG analysis
+                  scenarioName: Initial
+                  processGroupName: Plastic Molding
+                  materialName: ABS
+                  annualVolume: '10000'
+                  batchSize: '1000'
+                  productionLife: '10'
+                  vpeName: aPriori USA
+                  sampleUDA1: Project Alpha
+                  sampleUDA2: Design
+                  sampleUDA3: '18'
+                relativeCadFilePath: null
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/WorkflowActionResult'
+        '201':
+          description: Created
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '415':
+          $ref: '#/components/responses/UnsupportedMediaType'
+      security:
+      - SharedSecret: []
+      - JWTBearer: []
+  /api/workflows/{workflowIdentity}/jobs:
+    get:
+      tags:
+      - Workflow
+      summary: Returns a list of jobs to a given workflow
+      operationId: listWorkflowJobs
+      parameters:
+      - name: workflowIdentity
+        in: path
+        required: true
+        description: workflowIdentity
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/WorkflowJobSummary'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '415':
+          $ref: '#/components/responses/UnsupportedMediaType'
+      security:
+      - SharedSecret: []
+      - JWTBearer: []
+  /api/workflows/{workflowIdentity}/jobs/{jobIdentity}:
+    get:
+      tags:
+      - Workflow
+      summary: Returns details to a workflow job
+      operationId: getWorkflowJob
+      parameters:
+      - name: workflowIdentity
+        in: path
+        required: true
+        description: workflowIdentity
+        schema:
+          type: string
+      - name: jobIdentity
+        in: path
+        required: true
+        description: jobIdentity
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/WorkflowJob'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '415':
+          $ref: '#/components/responses/UnsupportedMediaType'
+      security:
+      - SharedSecret: []
+      - JWTBearer: []
+  /api/workflows/{workflowIdentity}/jobs/{jobIdentity}/{action}:
+    post:
+      tags:
+      - Workflow
+      summary: Runs a job action
+      description: 'Currently supported actions: [cancel]'
+      operationId: runWorkflowJobAction
+      parameters:
+      - name: workflowIdentity
+        in: path
+        required: true
+        description: workflowIdentity
+        schema:
+          type: string
+      - name: jobIdentity
+        in: path
+        required: true
+        description: jobIdentity
+        schema:
+          type: string
+      - name: action
+        in: path
+        required: true
+        description: action
+        schema:
+          type: string
+          enum:
+          - cancel
+      responses:
+        '201':
+          description: Created
+        '202':
+          description: Accepted
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '415':
+          $ref: '#/components/responses/UnsupportedMediaType'
+      security:
+      - SharedSecret: []
+      - JWTBearer: []
+  /api/workflows/{workflowIdentity}/jobs/{jobIdentity}/results:
+    get:
+      tags:
+      - Workflow
+      summary: Returns the results for all parts within a job
+      description: The response body will include all User Defined Attributes (UDAs) defined in your workflow setup. This ensures that all custom attributes set in your costing inputs are fully represented in the results.
+      operationId: getJobResults
+      parameters:
+      - name: workflowIdentity
+        in: path
+        required: true
+        description: workflowIdentity
+        schema:
+          type: string
+      - name: jobIdentity
+        in: path
+        required: true
+        description: jobIdentity
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/WorkflowJob'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          description: Conflict when job is not in terminal state
+        '415':
+          $ref: '#/components/responses/UnsupportedMediaType'
+      security:
+      - SharedSecret: []
+      - JWTBearer: []
+  /api/workflows/{workflowIdentity}/jobs/{jobIdentity}/parts/{plmPartIdentity}/results:
+    get:
+      tags:
+      - Workflow
+      summary: Returns the results for a part within a job
+      description: The response body will include all User Defined Attributes (UDAs) defined in your workflow setup. This ensures that all custom attributes set in your costing inputs are fully represented in the results.
+      operationId: getPartResults
+      parameters:
+      - name: workflowIdentity
+        in: path
+        required: true
+        description: workflowIdentity
+        schema:
+          type: string
+      - name: jobIdentity
+        in: path
+        required: true
+        description: jobIdentity
+        schema:
+          type: string
+      - name: plmPartIdentity
+        in: path
+        required: true
+        description: plmPartIdentity
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/WorkflowJob'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          description: Conflict when job is not in terminal state
+        '415':
+          $ref: '#/components/responses/UnsupportedMediaType'
+      security:
+      - SharedSecret: []
+      - JWTBearer: []
+components:
+  responses:
+    Unauthorized:
+      description: Unauthorized
+    UnsupportedMediaType:
+      description: Unsupported Media Type
+    BadRequest:
+      description: Bad Request
+    NotFound:
+      description: Resource Not Found
+    Forbidden:
+      description: Forbidden
+  schemas:
+    WorkflowJob:
+      type: object
+      properties:
+        completedAt:
+          type: string
+          format: date-time
+        componentsFailed:
+          type: integer
+          format: int32
+        componentsProcessed:
+          type: integer
+          format: int32
+        componentsTotal:
+          type: integer
+          format: int32
+        errorMessage:
+          type: string
+        identity:
+          type: string
+        outputFolder:
+          type: string
+        startedAt:
+          type: string
+          format: date-time
+        status:
+          type: string
+    Workflow:
+      type: object
+      properties:
+        description:
+          type: string
+        id:
+          type: string
+        locked:
+          type: boolean
+        name:
+          type: string
+        partSelectionType:
+          type: string
+          enum:
+          - Spreadsheet
+          - REST API request
+          - Query definition
+    WorkflowJobSummary:
+      type: object
+      properties:
+        identity:
+          type: string
+        outputFolder:
+          type: string
+        status:
+          type: string
+    WorkflowActionResult:
+      type: object
+      properties:
+        jobId:
+          type: string
+        startedAt:
+          type: string
+          description: 'Example : "yyyy-MM-dd''T''HH:mm''Z"'
+  securitySchemes:
+    JWTBearer:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: Published by aPriori as security scheme "JWT Bearer" — type apiKey, name Authorization, in HEADER.
+    SharedSecret:
+      type: apiKey
+      name: key
+      in: query
+      description: Published by aPriori as security scheme "Shared Secret" — type apiKey, name key, in QUERY.

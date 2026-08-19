@@ -1,0 +1,241 @@
+openapi: 3.2.0
+info:
+  title: aP Connect REST Agent API
+  version: 4.0.2
+  description: 'The aP Connect Agent REST API allows you to retrieve information about your aP Connect Agent and Workflows or to initiate actions, such as service shutdowns or workflow invocations, from a machine or server that is networked to your Agent.
+
+
+    PROVENANCE: this document was reconstructed by API Evangelist from aPriori''s own published "aP Connect Agent REST API Reference Guide" at https://docs.apriori.com/en/Connect/apc/rarg/ — a swagger2markup-style rendering (Overview / Paths / Definitions / Security sections) of the Agent''s live spec. aPriori does NOT serve a spec on a public host: the machine-readable definition is published by the Agent itself at `http://localhost:<port_number>/v4/api-docs`, which only a customer running the Agent can reach. Nothing here is invented; every path, parameter, response code, schema property and security scheme is transcribed from the published reference pages. The one inference is flagged with `x-inferred: true` (see /api/shutdown/{nonce}).'
+  contact:
+    name: aPriori Customer Support
+    url: https://support.apriori.com/hc/en-us
+  x-evidence:
+    fetched: '2026-08-06'
+    method: derived
+    sources:
+    - url: https://docs.apriori.com/en/Connect/apc/rarg/overview/
+      http_status: 200
+    - url: https://docs.apriori.com/en/Connect/apc/rarg/Paths/
+      http_status: 200
+    - url: https://docs.apriori.com/en/Connect/apc/rarg/Definitions/
+      http_status: 200
+    - url: https://docs.apriori.com/en/Connect/apc/rarg/Security/
+      http_status: 200
+    live_spec_endpoint: http://localhost:<port_number>/v4/api-docs
+    live_spec_reachable: false
+    live_spec_note: Customer-hosted Agent. The Agent publishes its own OpenAPI/Swagger at /v4/api-docs on localhost; there is no public URL to fetch it from.
+  x-operation-ids: aPriori's published reference renders operation summaries, not operationIds. The operationId values in this document were derived from those summaries by API Evangelist and are NOT asserted to match the Agent's own operationIds.
+servers:
+- url: http://localhost:{port_number}
+  description: The aP Connect Agent runs on a customer-managed host. aPriori documents the base URL as "localhost:<port_number>/" — there is no vendor-hosted origin.
+  variables:
+    port_number:
+      default: '8080'
+      description: Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.
+tags:
+- name: Agent
+  description: Agent Controller
+paths:
+  /api/configuration:
+    get:
+      tags:
+      - Agent
+      summary: Returns the service configuration
+      operationId: getServiceConfiguration
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ServiceConfiguration'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '415':
+          $ref: '#/components/responses/UnsupportedMediaType'
+      security:
+      - SharedSecret: []
+      - JWTBearer: []
+  /api/status:
+    get:
+      tags:
+      - Agent
+      summary: Returns the service status
+      operationId: getServiceStatus
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ServiceStatus'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '415':
+          $ref: '#/components/responses/UnsupportedMediaType'
+      security:
+      - SharedSecret: []
+      - JWTBearer: []
+  /api/shutdown:
+    post:
+      tags:
+      - Agent
+      summary: Creates and returns a shutdown nonce
+      operationId: createShutdownNonce
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Shutdown'
+        '201':
+          description: Created
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '415':
+          $ref: '#/components/responses/UnsupportedMediaType'
+      security:
+      - SharedSecret: []
+      - JWTBearer: []
+  /api/shutdown/{nonce}:
+    post:
+      tags:
+      - Agent
+      summary: Initiates shutdown
+      description: 'Requires a nonce to verify the shutdown request. Supported modes are: [completeAndTerminate]'
+      operationId: initiateShutdown
+      x-inferred: true
+      x-inferred-note: 'aPriori''s reference page renders this operation''s request line as "POST /api/shutdown" while also documenting `nonce` as a REQUIRED PATH parameter — two operations cannot share the same method+path in OpenAPI. The templated segment {nonce} is API Evangelist''s inference from the documented path parameter, NOT a value aPriori publishes. Source: https://docs.apriori.com/en/Connect/apc/rarg/Initiates-shutdown/'
+      parameters:
+      - name: nonce
+        in: path
+        required: true
+        description: nonce
+        schema:
+          type: string
+      requestBody:
+        required: true
+        description: configs
+        content:
+          application/json;charset=UTF-8:
+            schema:
+              $ref: '#/components/schemas/ShutdownConfigs'
+      responses:
+        '201':
+          description: Created
+        '204':
+          description: Shutdown initiated
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '415':
+          $ref: '#/components/responses/UnsupportedMediaType'
+      security:
+      - SharedSecret: []
+      - JWTBearer: []
+components:
+  responses:
+    Unauthorized:
+      description: Unauthorized
+    UnsupportedMediaType:
+      description: Unsupported Media Type
+    Forbidden:
+      description: Forbidden
+    BadRequest:
+      description: Bad Request
+    NotFound:
+      description: Resource Not Found
+  schemas:
+    ShutdownConfigs:
+      type: object
+      properties:
+        shutdownMode:
+          type: string
+          description: 'Currently there is only one shutdown mode supported: completeAndTerminate'
+          example: completeAndTerminate
+    Shutdown:
+      type: object
+      properties:
+        shutdownCode:
+          type: string
+    ServiceStatus:
+      type: object
+      properties:
+        cicConnectionStatus:
+          type: string
+          description: Rendered in aPriori's published Definitions table as "cicConnection Status (optional)".
+        jobCount:
+          type: integer
+          format: int32
+        plmConnectionStatus:
+          type: string
+        serviceStatus:
+          type: string
+        serviceTime:
+          type: string
+          description: 'Example : "yyyy-MM-dd''T''HH:mm''Z"'
+    ServiceConfiguration:
+      type: object
+      properties:
+        cicHostUrl:
+          type: string
+        csrfTokenTimeoutSeconds:
+          type: integer
+          format: int32
+        fscUrl:
+          type: string
+        hostname:
+          type: string
+        maxPartsToReturn:
+          type: integer
+          format: int32
+        plmType:
+          type: string
+          enum:
+          - FILE_SYSTEM
+          - MOCK
+          - TEAMCENTER
+          - WINDCHILL
+        reconnectionInterval:
+          type: integer
+          format: int32
+        rootFolderPath:
+          type: string
+        scanRate:
+          type: integer
+          format: int32
+  securitySchemes:
+    JWTBearer:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: Published by aPriori as security scheme "JWT Bearer" — type apiKey, name Authorization, in HEADER.
+    SharedSecret:
+      type: apiKey
+      name: key
+      in: query
+      description: Published by aPriori as security scheme "Shared Secret" — type apiKey, name key, in QUERY.

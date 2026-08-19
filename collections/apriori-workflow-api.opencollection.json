@@ -1,0 +1,256 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "aP Connect Agent REST Workflow API",
+    "version": "4.0.2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Workflow",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns a list of all workflows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:{port_number}/api/workflows",
+            "auth": {
+              "type": "apikey",
+              "key": "key",
+              "value": "{{key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Returns a list of all workflows"
+        },
+        {
+          "info": {
+            "name": "Returns details to a given workflow",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:{port_number}/api/workflows/:workflowIdentity",
+            "params": [
+              {
+                "name": "workflowIdentity",
+                "value": "",
+                "type": "path",
+                "description": "workflowIdentity"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "key",
+              "value": "{{key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Returns details to a given workflow"
+        },
+        {
+          "info": {
+            "name": "Runs a workflow action",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:{port_number}/api/workflows/:workflowIdentity/:action",
+            "params": [
+              {
+                "name": "workflowIdentity",
+                "value": "",
+                "type": "path",
+                "description": "workflowIdentity"
+              },
+              {
+                "name": "action",
+                "value": "",
+                "type": "path",
+                "description": "action"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "key",
+              "value": "{{key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Currently supported actions: [run, runPartList]. run — Invoke a file system or query-based job. runPartList — Invoke a REST-driven job including the specified components and optional inputs. When using the runPartList endpoint, regardless of whether you intend to specify costing input values, you must include the costingInputs section in the request body."
+        },
+        {
+          "info": {
+            "name": "Returns a list of jobs to a given workflow",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:{port_number}/api/workflows/:workflowIdentity/jobs",
+            "params": [
+              {
+                "name": "workflowIdentity",
+                "value": "",
+                "type": "path",
+                "description": "workflowIdentity"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "key",
+              "value": "{{key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Returns a list of jobs to a given workflow"
+        },
+        {
+          "info": {
+            "name": "Returns details to a workflow job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:{port_number}/api/workflows/:workflowIdentity/jobs/:jobIdentity",
+            "params": [
+              {
+                "name": "workflowIdentity",
+                "value": "",
+                "type": "path",
+                "description": "workflowIdentity"
+              },
+              {
+                "name": "jobIdentity",
+                "value": "",
+                "type": "path",
+                "description": "jobIdentity"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "key",
+              "value": "{{key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Returns details to a workflow job"
+        },
+        {
+          "info": {
+            "name": "Runs a job action",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:{port_number}/api/workflows/:workflowIdentity/jobs/:jobIdentity/:action",
+            "params": [
+              {
+                "name": "workflowIdentity",
+                "value": "",
+                "type": "path",
+                "description": "workflowIdentity"
+              },
+              {
+                "name": "jobIdentity",
+                "value": "",
+                "type": "path",
+                "description": "jobIdentity"
+              },
+              {
+                "name": "action",
+                "value": "",
+                "type": "path",
+                "description": "action"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "key",
+              "value": "{{key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Currently supported actions: [cancel]"
+        },
+        {
+          "info": {
+            "name": "Returns the results for all parts within a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:{port_number}/api/workflows/:workflowIdentity/jobs/:jobIdentity/results",
+            "params": [
+              {
+                "name": "workflowIdentity",
+                "value": "",
+                "type": "path",
+                "description": "workflowIdentity"
+              },
+              {
+                "name": "jobIdentity",
+                "value": "",
+                "type": "path",
+                "description": "jobIdentity"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "key",
+              "value": "{{key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "The response body will include all User Defined Attributes (UDAs) defined in your workflow setup. This ensures that all custom attributes set in your costing inputs are fully represented in the results."
+        },
+        {
+          "info": {
+            "name": "Returns the results for a part within a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:{port_number}/api/workflows/:workflowIdentity/jobs/:jobIdentity/parts/:plmPartIdentity/results",
+            "params": [
+              {
+                "name": "workflowIdentity",
+                "value": "",
+                "type": "path",
+                "description": "workflowIdentity"
+              },
+              {
+                "name": "jobIdentity",
+                "value": "",
+                "type": "path",
+                "description": "jobIdentity"
+              },
+              {
+                "name": "plmPartIdentity",
+                "value": "",
+                "type": "path",
+                "description": "plmPartIdentity"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "key",
+              "value": "{{key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "The response body will include all User Defined Attributes (UDAs) defined in your workflow setup. This ensures that all custom attributes set in your costing inputs are fully represented in the results."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

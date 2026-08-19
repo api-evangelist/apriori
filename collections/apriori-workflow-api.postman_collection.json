@@ -1,0 +1,3716 @@
+{
+  "item": [
+    {
+      "id": "4649d4da-0b3a-4175-85bb-4ac502cf44d3",
+      "name": "Workflow",
+      "description": {
+        "content": "Workflows Controller",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f7f8f498-e5c4-4916-9532-49e70d6ee810",
+          "name": "Returns a list of all workflows",
+          "request": {
+            "name": "Returns a list of all workflows",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "workflows"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                  "type": "any",
+                  "value": "{{port_number}}",
+                  "key": "port_number"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b68543b7-3235-4cc1-ba07-d97e2f497b0d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "[\n  {\n    \"description\": \"string\",\n    \"id\": \"string\",\n    \"locked\": false,\n    \"name\": \"string\",\n    \"partSelectionType\": \"REST API request\"\n  },\n  {\n    \"description\": \"string\",\n    \"id\": \"string\",\n    \"locked\": true,\n    \"name\": \"string\",\n    \"partSelectionType\": \"Spreadsheet\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb19e9b6-326b-4264-9186-4a355c430916",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0b6d5c47-4d02-403a-a9ce-8c8b896adc10",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ea09ca2b-e82f-4794-b4c3-7fd8ca3c794e",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9091e855-faf5-4261-beb4-262a73903251",
+              "name": "Resource Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0282ccbf-3fa8-43d0-89ff-8f9736d19548",
+              "name": "Unsupported Media Type",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "98d1a132-29ef-44b3-b0c6-6f784a9b5942",
+          "name": "Returns details to a given workflow",
+          "request": {
+            "name": "Returns details to a given workflow",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "workflows",
+                ":workflowIdentity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workflowIdentity",
+                  "description": "(Required) workflowIdentity"
+                },
+                {
+                  "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                  "type": "any",
+                  "value": "{{port_number}}",
+                  "key": "port_number"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6fa7c6b1-d6a4-448a-8518-6939657a4a49",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"description\": \"string\",\n  \"id\": \"string\",\n  \"locked\": true,\n  \"name\": \"string\",\n  \"partSelectionType\": \"REST API request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "477c7a90-e303-4bc4-a236-ad5c7af3907e",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e2d91a91-1594-46fb-806a-f937e34b9c28",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f659fd03-7474-4c20-b26e-7a0d9e6b73f6",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "10fa9c45-8d9f-4cd1-b309-47e2bc00e9eb",
+              "name": "Resource Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7ba7d41c-90ac-4b61-9bfb-c3c8202fc162",
+              "name": "Unsupported Media Type",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "183e39e1-d8bb-42c6-8a58-bbc62af04255",
+          "name": "Runs a workflow action",
+          "request": {
+            "name": "Runs a workflow action",
+            "description": {
+              "content": "Currently supported actions: [run, runPartList]. run — Invoke a file system or query-based job. runPartList — Invoke a REST-driven job including the specified components and optional inputs. When using the runPartList endpoint, regardless of whether you intend to specify costing input values, you must include the costingInputs section in the request body.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "workflows",
+                ":workflowIdentity",
+                ":action"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workflowIdentity",
+                  "description": "(Required) workflowIdentity"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "action",
+                  "description": "(Required) action"
+                },
+                {
+                  "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                  "type": "any",
+                  "value": "{{port_number}}",
+                  "key": "port_number"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"parts\": [\n    {\n      \"id\": \"<string>\",\n      \"costingInputs\": {\n        \"key_0\": 5642,\n        \"key_1\": 9531.993625201389\n      },\n      \"relativeCadFilePath\": \"<string,null>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"costingInputs\": {\n        \"key_0\": \"string\",\n        \"key_1\": 734\n      },\n      \"relativeCadFilePath\": \"<string,null>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e7d12dee-1fdb-4504-b133-3cb033a26f4d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    ":action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action",
+                      "description": "(Required) action"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"parts\": [\n    {\n      \"id\": \"abcplmpartid\",\n      \"costingInputs\": {\n        \"description\": \"CIG analysis\",\n        \"scenarioName\": \"Initial\",\n        \"processGroupName\": \"Plastic Molding\",\n        \"materialName\": \"ABS\",\n        \"annualVolume\": \"10000\",\n        \"batchSize\": \"1000\",\n        \"productionLife\": \"10\",\n        \"vpeName\": \"aPriori USA\",\n        \"sampleUDA1\": \"Project Alpha\",\n        \"sampleUDA2\": \"Design\",\n        \"sampleUDA3\": \"18\"\n      },\n      \"relativeCadFilePath\": null\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"jobId\": \"string\",\n  \"startedAt\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5b7b05ce-6eb8-4206-8459-ee1e2e5d68f1",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    ":action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action",
+                      "description": "(Required) action"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"parts\": [\n    {\n      \"id\": \"abcplmpartid\",\n      \"costingInputs\": {\n        \"description\": \"CIG analysis\",\n        \"scenarioName\": \"Initial\",\n        \"processGroupName\": \"Plastic Molding\",\n        \"materialName\": \"ABS\",\n        \"annualVolume\": \"10000\",\n        \"batchSize\": \"1000\",\n        \"productionLife\": \"10\",\n        \"vpeName\": \"aPriori USA\",\n        \"sampleUDA1\": \"Project Alpha\",\n        \"sampleUDA2\": \"Design\",\n        \"sampleUDA3\": \"18\"\n      },\n      \"relativeCadFilePath\": null\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3513a144-b213-4b48-95b0-d93221912912",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    ":action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action",
+                      "description": "(Required) action"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"parts\": [\n    {\n      \"id\": \"abcplmpartid\",\n      \"costingInputs\": {\n        \"description\": \"CIG analysis\",\n        \"scenarioName\": \"Initial\",\n        \"processGroupName\": \"Plastic Molding\",\n        \"materialName\": \"ABS\",\n        \"annualVolume\": \"10000\",\n        \"batchSize\": \"1000\",\n        \"productionLife\": \"10\",\n        \"vpeName\": \"aPriori USA\",\n        \"sampleUDA1\": \"Project Alpha\",\n        \"sampleUDA2\": \"Design\",\n        \"sampleUDA3\": \"18\"\n      },\n      \"relativeCadFilePath\": null\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "febf7228-e78e-4ab9-a964-efc599f23f00",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    ":action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action",
+                      "description": "(Required) action"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"parts\": [\n    {\n      \"id\": \"abcplmpartid\",\n      \"costingInputs\": {\n        \"description\": \"CIG analysis\",\n        \"scenarioName\": \"Initial\",\n        \"processGroupName\": \"Plastic Molding\",\n        \"materialName\": \"ABS\",\n        \"annualVolume\": \"10000\",\n        \"batchSize\": \"1000\",\n        \"productionLife\": \"10\",\n        \"vpeName\": \"aPriori USA\",\n        \"sampleUDA1\": \"Project Alpha\",\n        \"sampleUDA2\": \"Design\",\n        \"sampleUDA3\": \"18\"\n      },\n      \"relativeCadFilePath\": null\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0851edfe-f25b-46b4-90a5-193460a95180",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    ":action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action",
+                      "description": "(Required) action"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"parts\": [\n    {\n      \"id\": \"abcplmpartid\",\n      \"costingInputs\": {\n        \"description\": \"CIG analysis\",\n        \"scenarioName\": \"Initial\",\n        \"processGroupName\": \"Plastic Molding\",\n        \"materialName\": \"ABS\",\n        \"annualVolume\": \"10000\",\n        \"batchSize\": \"1000\",\n        \"productionLife\": \"10\",\n        \"vpeName\": \"aPriori USA\",\n        \"sampleUDA1\": \"Project Alpha\",\n        \"sampleUDA2\": \"Design\",\n        \"sampleUDA3\": \"18\"\n      },\n      \"relativeCadFilePath\": null\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "70ff3f9b-1e7c-4025-9113-3d4abf54c1f6",
+              "name": "Resource Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    ":action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action",
+                      "description": "(Required) action"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"parts\": [\n    {\n      \"id\": \"abcplmpartid\",\n      \"costingInputs\": {\n        \"description\": \"CIG analysis\",\n        \"scenarioName\": \"Initial\",\n        \"processGroupName\": \"Plastic Molding\",\n        \"materialName\": \"ABS\",\n        \"annualVolume\": \"10000\",\n        \"batchSize\": \"1000\",\n        \"productionLife\": \"10\",\n        \"vpeName\": \"aPriori USA\",\n        \"sampleUDA1\": \"Project Alpha\",\n        \"sampleUDA2\": \"Design\",\n        \"sampleUDA3\": \"18\"\n      },\n      \"relativeCadFilePath\": null\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "13980615-026e-4679-9a0a-7d5d925866ef",
+              "name": "Unsupported Media Type",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    ":action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action",
+                      "description": "(Required) action"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"parts\": [\n    {\n      \"id\": \"abcplmpartid\",\n      \"costingInputs\": {\n        \"description\": \"CIG analysis\",\n        \"scenarioName\": \"Initial\",\n        \"processGroupName\": \"Plastic Molding\",\n        \"materialName\": \"ABS\",\n        \"annualVolume\": \"10000\",\n        \"batchSize\": \"1000\",\n        \"productionLife\": \"10\",\n        \"vpeName\": \"aPriori USA\",\n        \"sampleUDA1\": \"Project Alpha\",\n        \"sampleUDA2\": \"Design\",\n        \"sampleUDA3\": \"18\"\n      },\n      \"relativeCadFilePath\": null\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b2a1c4e-399d-4b9a-ba1d-3394821c4db4",
+          "name": "Returns a list of jobs to a given workflow",
+          "request": {
+            "name": "Returns a list of jobs to a given workflow",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "workflows",
+                ":workflowIdentity",
+                "jobs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workflowIdentity",
+                  "description": "(Required) workflowIdentity"
+                },
+                {
+                  "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                  "type": "any",
+                  "value": "{{port_number}}",
+                  "key": "port_number"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cd82552b-2dda-4817-ac63-22ef989d8458",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"identity\": \"string\",\n  \"outputFolder\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e58e291b-3a0d-4bc7-8992-cdcf00359593",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "28c39dbc-a41e-4f46-8b1a-1ebb434f838f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "11640cdb-9026-4f17-8d90-345417e020bf",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "246f335d-ffd5-4072-bf3f-42b4a908e509",
+              "name": "Resource Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "75304997-03dd-436a-bb2c-35e66c8f34c8",
+              "name": "Unsupported Media Type",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9dbb3377-eb7d-45e4-a72a-64c2ebde1dd0",
+          "name": "Returns details to a workflow job",
+          "request": {
+            "name": "Returns details to a workflow job",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "workflows",
+                ":workflowIdentity",
+                "jobs",
+                ":jobIdentity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workflowIdentity",
+                  "description": "(Required) workflowIdentity"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "jobIdentity",
+                  "description": "(Required) jobIdentity"
+                },
+                {
+                  "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                  "type": "any",
+                  "value": "{{port_number}}",
+                  "key": "port_number"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "91644d53-e538-407e-ac58-9e697f79a366",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    "jobs",
+                    ":jobIdentity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobIdentity",
+                      "description": "(Required) jobIdentity"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"completedAt\": \"1957-06-14T22:56:29.877Z\",\n  \"componentsFailed\": 1454,\n  \"componentsProcessed\": 9729,\n  \"componentsTotal\": 3593,\n  \"errorMessage\": \"string\",\n  \"identity\": \"string\",\n  \"outputFolder\": \"string\",\n  \"startedAt\": \"1947-10-30T05:40:11.296Z\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae435aa9-2802-4942-818e-22e371a4cdfb",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    "jobs",
+                    ":jobIdentity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobIdentity",
+                      "description": "(Required) jobIdentity"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9b074fc9-2f16-4f4a-9faf-d743ca62c864",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    "jobs",
+                    ":jobIdentity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobIdentity",
+                      "description": "(Required) jobIdentity"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9c567416-a233-453d-974a-e8c6ecbd8d13",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    "jobs",
+                    ":jobIdentity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobIdentity",
+                      "description": "(Required) jobIdentity"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1f675151-81eb-4982-9385-bfaaaa1c7585",
+              "name": "Resource Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    "jobs",
+                    ":jobIdentity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobIdentity",
+                      "description": "(Required) jobIdentity"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7dd38149-9566-4669-9122-abb619d18548",
+              "name": "Unsupported Media Type",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    "jobs",
+                    ":jobIdentity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobIdentity",
+                      "description": "(Required) jobIdentity"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9cc211e0-803c-41ad-8565-a5cc638a83f0",
+          "name": "Runs a job action",
+          "request": {
+            "name": "Runs a job action",
+            "description": {
+              "content": "Currently supported actions: [cancel]",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "workflows",
+                ":workflowIdentity",
+                "jobs",
+                ":jobIdentity",
+                ":action"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workflowIdentity",
+                  "description": "(Required) workflowIdentity"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "jobIdentity",
+                  "description": "(Required) jobIdentity"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "action",
+                  "description": "(Required) action"
+                },
+                {
+                  "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                  "type": "any",
+                  "value": "{{port_number}}",
+                  "key": "port_number"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9848eb24-5c9e-442a-b006-4dd952c3199b",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    "jobs",
+                    ":jobIdentity",
+                    ":action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobIdentity",
+                      "description": "(Required) jobIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action",
+                      "description": "(Required) action"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c1a20e11-5240-4f80-a313-2b85c415332a",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    "jobs",
+                    ":jobIdentity",
+                    ":action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobIdentity",
+                      "description": "(Required) jobIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action",
+                      "description": "(Required) action"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "76264a31-1701-4f1d-a854-ff4952f3061f",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    "jobs",
+                    ":jobIdentity",
+                    ":action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobIdentity",
+                      "description": "(Required) jobIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action",
+                      "description": "(Required) action"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4b6d03f5-71a5-4713-a6b6-f13c86b8cfc2",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    "jobs",
+                    ":jobIdentity",
+                    ":action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobIdentity",
+                      "description": "(Required) jobIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action",
+                      "description": "(Required) action"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "384f28c6-fbf1-4ab1-a606-c0cae90de938",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    "jobs",
+                    ":jobIdentity",
+                    ":action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobIdentity",
+                      "description": "(Required) jobIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action",
+                      "description": "(Required) action"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bc8c5a0c-0401-4393-b569-60c753617989",
+              "name": "Resource Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    "jobs",
+                    ":jobIdentity",
+                    ":action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobIdentity",
+                      "description": "(Required) jobIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action",
+                      "description": "(Required) action"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b0069ec4-7b2d-445f-9ec0-5b78683f2ba5",
+              "name": "Unsupported Media Type",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    "jobs",
+                    ":jobIdentity",
+                    ":action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobIdentity",
+                      "description": "(Required) jobIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action",
+                      "description": "(Required) action"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4ee4641a-62dc-4d68-a866-f610fcbf4498",
+          "name": "Returns the results for all parts within a job",
+          "request": {
+            "name": "Returns the results for all parts within a job",
+            "description": {
+              "content": "The response body will include all User Defined Attributes (UDAs) defined in your workflow setup. This ensures that all custom attributes set in your costing inputs are fully represented in the results.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "workflows",
+                ":workflowIdentity",
+                "jobs",
+                ":jobIdentity",
+                "results"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workflowIdentity",
+                  "description": "(Required) workflowIdentity"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "jobIdentity",
+                  "description": "(Required) jobIdentity"
+                },
+                {
+                  "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                  "type": "any",
+                  "value": "{{port_number}}",
+                  "key": "port_number"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c988a99d-77fe-43f7-a209-678e204c68a1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    "jobs",
+                    ":jobIdentity",
+                    "results"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobIdentity",
+                      "description": "(Required) jobIdentity"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"completedAt\": \"1957-06-14T22:56:29.877Z\",\n  \"componentsFailed\": 1454,\n  \"componentsProcessed\": 9729,\n  \"componentsTotal\": 3593,\n  \"errorMessage\": \"string\",\n  \"identity\": \"string\",\n  \"outputFolder\": \"string\",\n  \"startedAt\": \"1947-10-30T05:40:11.296Z\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9bf38cab-4c99-436c-a1aa-e6792228b7af",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    "jobs",
+                    ":jobIdentity",
+                    "results"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobIdentity",
+                      "description": "(Required) jobIdentity"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "de953f21-575a-4e2f-a030-1df54aa15590",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    "jobs",
+                    ":jobIdentity",
+                    "results"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobIdentity",
+                      "description": "(Required) jobIdentity"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3cd0324b-0972-491e-a39a-da5bf8605a9a",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    "jobs",
+                    ":jobIdentity",
+                    "results"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobIdentity",
+                      "description": "(Required) jobIdentity"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4e647c6a-0afd-4fd7-be86-e5cf80743200",
+              "name": "Resource Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    "jobs",
+                    ":jobIdentity",
+                    "results"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobIdentity",
+                      "description": "(Required) jobIdentity"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0aaa2211-8891-495b-8a4c-e44e50b31e22",
+              "name": "Conflict when job is not in terminal state",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    "jobs",
+                    ":jobIdentity",
+                    "results"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobIdentity",
+                      "description": "(Required) jobIdentity"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4fb9c60a-ceff-4a1c-81be-1e085fced6cb",
+              "name": "Unsupported Media Type",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    "jobs",
+                    ":jobIdentity",
+                    "results"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobIdentity",
+                      "description": "(Required) jobIdentity"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3caed4b3-4071-4a89-86bf-dfde21f1fbf2",
+          "name": "Returns the results for a part within a job",
+          "request": {
+            "name": "Returns the results for a part within a job",
+            "description": {
+              "content": "The response body will include all User Defined Attributes (UDAs) defined in your workflow setup. This ensures that all custom attributes set in your costing inputs are fully represented in the results.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "workflows",
+                ":workflowIdentity",
+                "jobs",
+                ":jobIdentity",
+                "parts",
+                ":plmPartIdentity",
+                "results"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workflowIdentity",
+                  "description": "(Required) workflowIdentity"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "jobIdentity",
+                  "description": "(Required) jobIdentity"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "plmPartIdentity",
+                  "description": "(Required) plmPartIdentity"
+                },
+                {
+                  "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                  "type": "any",
+                  "value": "{{port_number}}",
+                  "key": "port_number"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2e76e880-f65c-410a-bfce-ea757e6f09be",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    "jobs",
+                    ":jobIdentity",
+                    "parts",
+                    ":plmPartIdentity",
+                    "results"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobIdentity",
+                      "description": "(Required) jobIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "plmPartIdentity",
+                      "description": "(Required) plmPartIdentity"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"completedAt\": \"1957-06-14T22:56:29.877Z\",\n  \"componentsFailed\": 1454,\n  \"componentsProcessed\": 9729,\n  \"componentsTotal\": 3593,\n  \"errorMessage\": \"string\",\n  \"identity\": \"string\",\n  \"outputFolder\": \"string\",\n  \"startedAt\": \"1947-10-30T05:40:11.296Z\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "31b5f99e-bff3-4036-919b-3d0680235a75",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    "jobs",
+                    ":jobIdentity",
+                    "parts",
+                    ":plmPartIdentity",
+                    "results"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobIdentity",
+                      "description": "(Required) jobIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "plmPartIdentity",
+                      "description": "(Required) plmPartIdentity"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ee7d90fb-7295-46cf-b2ce-f7543ba24d7c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    "jobs",
+                    ":jobIdentity",
+                    "parts",
+                    ":plmPartIdentity",
+                    "results"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobIdentity",
+                      "description": "(Required) jobIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "plmPartIdentity",
+                      "description": "(Required) plmPartIdentity"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7b3aa479-c5b6-4a7f-b8f6-1f8b3314e3ee",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    "jobs",
+                    ":jobIdentity",
+                    "parts",
+                    ":plmPartIdentity",
+                    "results"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobIdentity",
+                      "description": "(Required) jobIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "plmPartIdentity",
+                      "description": "(Required) plmPartIdentity"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a505bce5-aec3-476d-b077-565293590dfb",
+              "name": "Resource Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    "jobs",
+                    ":jobIdentity",
+                    "parts",
+                    ":plmPartIdentity",
+                    "results"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobIdentity",
+                      "description": "(Required) jobIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "plmPartIdentity",
+                      "description": "(Required) plmPartIdentity"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d084a665-0571-4676-9d50-014993bc8247",
+              "name": "Conflict when job is not in terminal state",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    "jobs",
+                    ":jobIdentity",
+                    "parts",
+                    ":plmPartIdentity",
+                    "results"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobIdentity",
+                      "description": "(Required) jobIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "plmPartIdentity",
+                      "description": "(Required) plmPartIdentity"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0dfe62d6-22a1-448f-bf4a-f7d708181a2a",
+              "name": "Unsupported Media Type",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "workflows",
+                    ":workflowIdentity",
+                    "jobs",
+                    ":jobIdentity",
+                    "parts",
+                    ":plmPartIdentity",
+                    "results"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowIdentity",
+                      "description": "(Required) workflowIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobIdentity",
+                      "description": "(Required) jobIdentity"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "plmPartIdentity",
+                      "description": "(Required) plmPartIdentity"
+                    },
+                    {
+                      "description": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+                      "type": "any",
+                      "value": "{{port_number}}",
+                      "key": "port_number"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Agent HTTP port chosen at install time. aPriori does not publish a default in the reference guide; this placeholder is a schema requirement, not a documented value.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "8080",
+      "key": "port_number"
+    },
+    {
+      "type": "string",
+      "value": "http://localhost:{{port_number}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5a310114-3561-4631-828f-aa882789699d",
+    "name": "aP Connect Agent REST Workflow API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The aP Connect Agent REST API allows you to retrieve information about your aP Connect Agent and Workflows or to initiate actions, such as service shutdowns or workflow invocations, from a machine or server that is networked to your Agent.\n\nPROVENANCE: this document was reconstructed by API Evangelist from aPriori's own published \"aP Connect Agent REST API Reference Guide\" at https://docs.apriori.com/en/Connect/apc/rarg/ — a swagger2markup-style rendering (Overview / Paths / Definitions / Security sections) of the Agent's live spec. aPriori does NOT serve a spec on a public host: the machine-readable definition is published by the Agent itself at `http://localhost:<port_number>/v4/api-docs`, which only a customer running the Agent can reach. Nothing here is invented; every path, parameter, response code, schema property and security scheme is transcribed from the published reference pages. The one inference is flagged with `x-inferred: true` (see /api/shutdown/{nonce}).\n\nContact Support:\n Name: aPriori Customer Support",
+      "type": "text/plain"
+    }
+  }
+}

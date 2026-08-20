@@ -19,6 +19,18 @@ created: '2026-08-06'
 modified: '2026-08-06'
 tags:
 - Company
+- Manufacturing
+- product-cost-management
+- design-for-manufacturability
+- should-cost
+- plm-integration
+- cost-engineering
+- Digital Manufacturing
+- Sustainability
+- Workflow-Automation
+- CAD
+tags_raw:
+- Company
 - manufacturing
 - product-cost-management
 - design-for-manufacturability
@@ -36,6 +48,8 @@ apis:
   humanURL: https://docs.apriori.com/en/Connect/apc/rarg/overview/
   baseURL: http://localhost/api
   tags:
+  - Agents
+  tags_raw:
   - Agent
   properties:
   - type: OpenAPI
@@ -60,6 +74,8 @@ apis:
   humanURL: https://docs.apriori.com/en/Connect/apc/rarg/overview/
   baseURL: http://localhost/api
   tags:
+  - Workflows
+  tags_raw:
   - Workflow
   properties:
   - type: OpenAPI

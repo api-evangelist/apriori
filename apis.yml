@@ -11,6 +11,18 @@ description: >-
   workflows, invoking REST-driven costing jobs, polling job state and retrieving per-part costing results,
   used to wire aPriori into Windchill, Teamcenter and file-system pipelines.
 url: https://raw.githubusercontent.com/api-evangelist/apriori/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://www.apriori.com/wp-content/uploads/2021/08/manufacturing-simulation-software-expert-partnership.jpg
 x-type: company
 x-source: harvest:secondary-market

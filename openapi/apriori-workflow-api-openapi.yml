@@ -2,10 +2,7 @@ openapi: 3.2.0
 info:
   title: aP Connect Agent REST Workflow API
   version: 4.0.2
-  description: 'The aP Connect Agent REST API allows you to retrieve information about your aP Connect Agent and Workflows or to initiate actions, such as service shutdowns or workflow invocations, from a machine or server that is networked to your Agent.
-
-
-    PROVENANCE: this document was reconstructed by API Evangelist from aPriori''s own published "aP Connect Agent REST API Reference Guide" at https://docs.apriori.com/en/Connect/apc/rarg/ — a swagger2markup-style rendering (Overview / Paths / Definitions / Security sections) of the Agent''s live spec. aPriori does NOT serve a spec on a public host: the machine-readable definition is published by the Agent itself at `http://localhost:<port_number>/v4/api-docs`, which only a customer running the Agent can reach. Nothing here is invented; every path, parameter, response code, schema property and security scheme is transcribed from the published reference pages. The one inference is flagged with `x-inferred: true` (see /api/shutdown/{nonce}).'
+  description: The aP Connect Agent REST API allows you to retrieve information about your aP Connect Agent and Workflows or to initiate actions, such as service shutdowns or workflow invocations, from a machine or server that is networked to your Agent.
   contact:
     name: aPriori Customer Support
     url: https://support.apriori.com/hc/en-us
@@ -391,10 +388,10 @@ paths:
       - JWTBearer: []
 components:
   responses:
-    Unauthorized:
-      description: Unauthorized
     UnsupportedMediaType:
       description: Unsupported Media Type
+    Unauthorized:
+      description: Unauthorized
     BadRequest:
       description: Bad Request
     NotFound:
@@ -428,6 +425,14 @@ components:
           format: date-time
         status:
           type: string
+    WorkflowActionResult:
+      type: object
+      properties:
+        jobId:
+          type: string
+        startedAt:
+          type: string
+          description: 'Example : "yyyy-MM-dd''T''HH:mm''Z"'
     Workflow:
       type: object
       properties:
@@ -454,14 +459,6 @@ components:
           type: string
         status:
           type: string
-    WorkflowActionResult:
-      type: object
-      properties:
-        jobId:
-          type: string
-        startedAt:
-          type: string
-          description: 'Example : "yyyy-MM-dd''T''HH:mm''Z"'
   securitySchemes:
     JWTBearer:
       type: apiKey

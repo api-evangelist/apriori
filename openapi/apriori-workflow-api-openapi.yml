@@ -387,18 +387,15 @@ paths:
       - SharedSecret: []
       - JWTBearer: []
 components:
-  responses:
-    UnsupportedMediaType:
-      description: Unsupported Media Type
-    Unauthorized:
-      description: Unauthorized
-    BadRequest:
-      description: Bad Request
-    NotFound:
-      description: Resource Not Found
-    Forbidden:
-      description: Forbidden
   schemas:
+    WorkflowActionResult:
+      type: object
+      properties:
+        jobId:
+          type: string
+        startedAt:
+          type: string
+          description: 'Example : "yyyy-MM-dd''T''HH:mm''Z"'
     WorkflowJob:
       type: object
       properties:
@@ -425,14 +422,15 @@ components:
           format: date-time
         status:
           type: string
-    WorkflowActionResult:
+    WorkflowJobSummary:
       type: object
       properties:
-        jobId:
+        identity:
           type: string
-        startedAt:
+        outputFolder:
           type: string
-          description: 'Example : "yyyy-MM-dd''T''HH:mm''Z"'
+        status:
+          type: string
     Workflow:
       type: object
       properties:
@@ -450,15 +448,17 @@ components:
           - Spreadsheet
           - REST API request
           - Query definition
-    WorkflowJobSummary:
-      type: object
-      properties:
-        identity:
-          type: string
-        outputFolder:
-          type: string
-        status:
-          type: string
+  responses:
+    Forbidden:
+      description: Forbidden
+    Unauthorized:
+      description: Unauthorized
+    BadRequest:
+      description: Bad Request
+    UnsupportedMediaType:
+      description: Unsupported Media Type
+    NotFound:
+      description: Resource Not Found
   securitySchemes:
     JWTBearer:
       type: apiKey

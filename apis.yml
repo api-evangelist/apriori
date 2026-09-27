@@ -53,7 +53,7 @@ tags:
 - cost-engineering
 - Digital Manufacturing
 - Sustainability
-- Workflow-Automation
+- Workflow Automation
 - CAD
 tags_raw:
 - Company
@@ -67,6 +67,7 @@ tags_raw:
 - sustainability
 - workflow-automation
 - cad
+- Workflow-Automation
 apis:
 - aid: apriori:apriori-agent-api
   name: aPriori Agent API

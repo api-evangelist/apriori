@@ -155,17 +155,6 @@ paths:
       - SharedSecret: []
       - JWTBearer: []
 components:
-  responses:
-    UnsupportedMediaType:
-      description: Unsupported Media Type
-    Unauthorized:
-      description: Unauthorized
-    BadRequest:
-      description: Bad Request
-    NotFound:
-      description: Resource Not Found
-    Forbidden:
-      description: Forbidden
   schemas:
     Shutdown:
       type: object
@@ -225,6 +214,17 @@ components:
         scanRate:
           type: integer
           format: int32
+  responses:
+    Unauthorized:
+      description: Unauthorized
+    BadRequest:
+      description: Bad Request
+    Forbidden:
+      description: Forbidden
+    UnsupportedMediaType:
+      description: Unsupported Media Type
+    NotFound:
+      description: Resource Not Found
   securitySchemes:
     JWTBearer:
       type: apiKey

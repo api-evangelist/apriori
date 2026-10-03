@@ -156,18 +156,6 @@ paths:
       - JWTBearer: []
 components:
   schemas:
-    Shutdown:
-      type: object
-      properties:
-        shutdownCode:
-          type: string
-    ShutdownConfigs:
-      type: object
-      properties:
-        shutdownMode:
-          type: string
-          description: 'Currently there is only one shutdown mode supported: completeAndTerminate'
-          example: completeAndTerminate
     ServiceStatus:
       type: object
       properties:
@@ -184,6 +172,18 @@ components:
         serviceTime:
           type: string
           description: 'Example : "yyyy-MM-dd''T''HH:mm''Z"'
+    Shutdown:
+      type: object
+      properties:
+        shutdownCode:
+          type: string
+    ShutdownConfigs:
+      type: object
+      properties:
+        shutdownMode:
+          type: string
+          description: 'Currently there is only one shutdown mode supported: completeAndTerminate'
+          example: completeAndTerminate
     ServiceConfiguration:
       type: object
       properties:
@@ -215,16 +215,16 @@ components:
           type: integer
           format: int32
   responses:
-    Unauthorized:
-      description: Unauthorized
-    BadRequest:
-      description: Bad Request
-    Forbidden:
-      description: Forbidden
-    UnsupportedMediaType:
-      description: Unsupported Media Type
     NotFound:
       description: Resource Not Found
+    Unauthorized:
+      description: Unauthorized
+    UnsupportedMediaType:
+      description: Unsupported Media Type
+    Forbidden:
+      description: Forbidden
+    BadRequest:
+      description: Bad Request
   securitySchemes:
     JWTBearer:
       type: apiKey

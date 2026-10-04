@@ -388,32 +388,6 @@ paths:
       - JWTBearer: []
 components:
   schemas:
-    WorkflowJob:
-      type: object
-      properties:
-        completedAt:
-          type: string
-          format: date-time
-        componentsFailed:
-          type: integer
-          format: int32
-        componentsProcessed:
-          type: integer
-          format: int32
-        componentsTotal:
-          type: integer
-          format: int32
-        errorMessage:
-          type: string
-        identity:
-          type: string
-        outputFolder:
-          type: string
-        startedAt:
-          type: string
-          format: date-time
-        status:
-          type: string
     Workflow:
       type: object
       properties:
@@ -440,6 +414,32 @@ components:
           type: string
         status:
           type: string
+    WorkflowJob:
+      type: object
+      properties:
+        completedAt:
+          type: string
+          format: date-time
+        componentsFailed:
+          type: integer
+          format: int32
+        componentsProcessed:
+          type: integer
+          format: int32
+        componentsTotal:
+          type: integer
+          format: int32
+        errorMessage:
+          type: string
+        identity:
+          type: string
+        outputFolder:
+          type: string
+        startedAt:
+          type: string
+          format: date-time
+        status:
+          type: string
     WorkflowActionResult:
       type: object
       properties:
@@ -451,14 +451,14 @@ components:
   responses:
     NotFound:
       description: Resource Not Found
-    Unauthorized:
-      description: Unauthorized
-    UnsupportedMediaType:
-      description: Unsupported Media Type
     Forbidden:
       description: Forbidden
     BadRequest:
       description: Bad Request
+    Unauthorized:
+      description: Unauthorized
+    UnsupportedMediaType:
+      description: Unsupported Media Type
   securitySchemes:
     JWTBearer:
       type: apiKey

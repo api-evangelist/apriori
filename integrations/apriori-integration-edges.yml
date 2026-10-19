@@ -1,0 +1,24 @@
+edges:
+- partner_name: Dassault Systèmes (own)
+  partner: dassault
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.3ds.com/partners/solutions/200000000009520_PDT00000001037_aPriori_CATIA_CostConnect
+  mirror_of: dassault/integrations/dassault-integration-edges.yml
+  apps:
+  - aPriori CATIA CostConnect
+  listing_count: 1
+  detected: '2026-10-19'
+  detected_by: mirror-platform-listings.py
+  category: CAA / 3DEXPERIENCE partner solution
+generated: '2026-10-19'
+method: searched
+source:
+- https://www.3ds.com/partners/find-solution
+checked:
+- https://www.3ds.com/partners/find-solution

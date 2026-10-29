@@ -64,18 +64,115 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-aPriori Technologies is a manufacturing insights software company founded in 2003. Its platform ingests CAD
-geometry and returns should-cost estimates, design-for-manufacturability (DFM) guidance, routing and
-cycle-time analysis, and manufacturing carbon figures. The public integration surface is **aP Connect** — a
-PLM/file-system connector plus a customer-installed Agent carrying a documented REST API (v4.0.2, 12
-operations) for listing workflows, invoking REST-driven costing jobs, polling job state, and retrieving
-per-part costing results.
+aPriori Technologies is a manufacturing insights software company founded in 2003 that simulates how a product will actually be made. Its platform ingests CAD geometry and returns should-cost estimates, design-for-manufacturability (DFM) guidance, routing and cycle-time analysis, and manufacturing carbon figures, so design, cost, sourcing and sustainability teams can act on production economics before tooling is cut. The product family covers aP Pro, aP Design, aP Generate, aP Analytics, aP Workspace and aiSource, delivered as aPriori Cloud or on-premise. Its public integration surface is aP Connect — a PLM/file-system connector plus a customer-installed Agent that carries a documented REST API for listing workflows, invoking REST-driven costing jobs, polling job state and retrieving per-part costing results, used to wire aPriori into Windchill, Teamcenter and file-system pipelines.
 
-Note: the aP Connect Agent is customer-hosted. aPriori documents its base URL as `localhost:<port_number>/`,
-and the Agent serves its own machine-readable spec at `/v4/api-docs` — reachable only from inside a
-customer's deployment. The OpenAPI in `openapi/` is API Evangelist's transcription of aPriori's own
-published REST API Reference Guide.
+**Areas:** Company · Manufacturing · product-cost-management · design-for-manufacturability · should-cost · plm-integration · cost-engineering · Digital Manufacturing · Sustainability · Workflow Automation · CAD
 
-- https://www.apriori.com/
-- https://docs.apriori.com/
-- https://docs.apriori.com/en/Connect/apc/rarg/overview/
+## aPriori on APIs.io
+
+Everything profiled for aPriori is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/apriori/](https://apis.io/providers/apriori/)** — or go straight to one of the APIs or properties below.
+
+### APIs (2)
+
+- [aPriori Agent API](https://apis.io/apis/apriori/apriori-agent-api/) — Agent Controller
+- [aPriori Workflow API](https://apis.io/apis/apriori/apriori-workflow-api/) — Workflows Controller
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [apriori-ap-connect](https://apis.io/servers/apriori/apriori-ap-connect/)
+
+#### Collections (2)
+
+Postman and Open Collection request collections.
+
+- [aP Connect REST Agent API](https://apis.io/collections/apriori/open-apriori-agent-api/)
+- [aP Connect Agent REST Workflow API](https://apis.io/collections/apriori/open-apriori-workflow-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Apriori Ap Connect Agent Overlay](https://apis.io/overlays/apriori/apriori-ap-connect-agent-overlay/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Apriori Authentication](https://apis.io/security/apriori/apriori-authentication/)
+- [Apriori Domain Security](https://apis.io/security/apriori/apriori-domain-security/)
+- [Apriori Trust Center](https://apis.io/security/apriori/apriori-trust-center/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.apriori.com/)
+- [Documentation](https://docs.apriori.com/)
+- [Getting started](https://docs.apriori.com/en/Connect/apc/ig/Agent-Installation-Overview/)
+- [API reference](https://docs.apriori.com/en/Connect/apc/rarg/overview/)
+- [Pricing](https://www.apriori.com/pricing/)
+- [Support](https://support.apriori.com/hc/en-us)
+- [Blog](https://www.apriori.com/blog/)
+- [Terms of service](https://www.apriori.com/legal-notice/)
+- [Privacy policy](https://www.apriori.com/privacy-policy/)
+
+## API Evangelist rating
+
+**Kin Score 40.6** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 64.3 |
+| Contract quality | 39.9 |
+| Contract governance | 4.5 |
+| Operational transparency | 15.8 |
+| Developer ergonomics | 47.0 |
+| Access clarity | 53.9 |
+
+**Agent readiness 20.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 29.4** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/apriori/](https://apis.io/providers/apriori/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for aPriori: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/apriori/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
